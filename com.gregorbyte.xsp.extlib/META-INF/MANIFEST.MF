@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gregorbyte Xsp Library
+Bundle-SymbolicName: com.gregorbyte.xsp.extlib;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.gregorbyte.xsp.Activator
+Bundle-Vendor: Gregorbyte
+Require-Bundle: org.eclipse.core.runtime,
+ com.ibm.xsp.extsn,
+ com.ibm.commons
+Bundle-ActivationPolicy: lazy
+Export-Package: com.gregorbyte.xsp,
+ com.gregorbyte.xsp.config
