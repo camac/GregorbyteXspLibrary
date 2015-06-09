@@ -2,3 +2,4 @@ com.gregorbyte.xsp.extlib.updatesite/artifacts.jar
 com.gregorbyte.xsp.extlib.updatesite/content.jar
 com.gregorbyte.xsp.extlib.updatesite/
 *.class
+buildDirectory/

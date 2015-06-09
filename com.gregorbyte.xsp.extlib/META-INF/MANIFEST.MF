@@ -11,3 +11,4 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Export-Package: com.gregorbyte.xsp,
  com.gregorbyte.xsp.config
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

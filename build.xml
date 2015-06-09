@@ -1,0 +1,265 @@
+<project name="Gregorbyte XspLibrary" default="clean">
+
+	<description>Build Tasks for Gregorbyte XspLibrary OSGi plugins</description>
+
+	<property name="featureId" value="com.gregorbyte.xsp.extlib.feature" />
+
+	<property name="buildDir" location="buildDirectory" />
+	<property name="buildConfigDir" location="buildConfig" />
+	<property name="pluginsDir" location="${buildDir}/plugins" />
+	<property name="featuresDir" location="${buildDir}/features" />
+
+	<property name="dominoPluginsDir" location="${dominoDataDir}/domino/workspace/applications/eclipse/plugins" />
+	<property name="dominoFeaturesDir" location="${dominoDataDir}/domino/workspace/applications/eclipse/features" />
+
+	<property name="siteXmlGeneratorJar" location="generateSiteXml.jar" />
+
+	<property name="updateSitePluginsDir" location="${updateSiteDir}/plugins" />
+	<property name="updateSiteFeaturesDir" location="${updateSiteDir}/features" />
+
+
+	<property name="buildId" value="GregorbyteExtLib" />
+	<property name="buildLabel" value="GregorbyteExtLib" />
+	<property name="buildNumber" value="0" />
+
+	<property name="builtPluginsZip" location="${buildDir}\${buildLabel}\${featureId}-${buildId}.zip" />
+
+	<target name="help">
+
+		<echo>The following properties must be set</echo>
+		<echo>
+		</echo>
+		<echo>eclipseBase - base folder where eclipse.exe is located</echo>
+		<echo>pdeBuildVersion - the part in brackets - {eclipseBase}\plugins\org.eclipse.pde.build_(3.8.100.v20130514-1028)</echo>
+		<echo>equinoxLauncherVersion - the part in brackets {eclipseBase}\plugins\org.eclipse.equinox.launcher_(1.3.0.v20130327-1440).jar</echo>
+		<echo>dominoProgDir - the location of your Domino Program Directory</echo>
+
+	</target>
+
+	<target name="clean">
+		<delete dir="${buildDir}" />
+		<delete dir="eclipse" />
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="${buildDir}">
+		</mkdir>
+		<mkdir dir="${pluginsDir}">
+		</mkdir>
+		<mkdir dir="${featuresDir}">
+		</mkdir>
+	</target>
+
+	<target name="copyPlugins" depends="init">
+
+		<copy todir="${pluginsDir}/com.gregorbyte.xsp.extlib">
+			<fileset dir="com.gregorbyte.xsp.extlib">
+				<exclude name="**/bin/**">
+				</exclude>
+			</fileset>
+		</copy>
+
+		<copy todir="${featuresDir}/com.gregorbyte.xsp.extlib.feature">
+			<fileset dir="com.gregorbyte.xsp.extlib.feature" />
+		</copy>
+
+	</target>
+
+	<target name="echoprops">
+
+		<echoproperties>
+		</echoproperties>
+
+	</target>
+	
+	<target name="getAllNestedJvmJars">
+
+		<fail unless="dominoProgDir">dominoProgDir must be set</fail>
+
+		<fileset id="jvmjarsFileset" dir="${dominoProgDir}/jvm">
+			<include name="**/*.jar" />
+		</fileset>
+
+		<pathconvert targetos="unix" property="JavaSE16Jars" refid="jvmjarsFileset" pathsep=";" />
+
+		<echo message="Domino JVM Jars = ${JavaSE16Jars}" />
+
+	</target>
+
+	<target name="findPdeBuildXml">
+
+		<fileset dir="${eclipseBase}\plugins" id="pdeBuildXmlFilePath" includes="org.eclipse.pde.build_*\scripts\build.xml">
+		</fileset>
+		
+		<property name="pdeBuildFilePath" refid="pdeBuildXmlFilePath"/>		
+		<property name="pdeBuildXml" location="${eclipseBase}\plugins\${pdeBuildFilePath}"></property>	
+		
+		<echo message="PDE Build Xml: ${pdeBuildXml}"/>
+				
+	</target>
+	
+	<target name="findLauncherJar">
+		
+		<fileset dir="${eclipseBase}\plugins" id="the.file" includes="org.eclipse.equinox.launcher_*.jar">
+		</fileset>
+		
+		<property name="launcherJarFile" refid="the.file"/>
+		
+		<property name="equinoxLauncherJar" location="${eclipseBase}\plugins\${launcherJarFile}" />
+		
+		<echo message="Equinox Launcher: ${equinoxLauncherJar}"/>
+		
+	</target>
+	
+	<target name="buildPlugins" depends="copyPlugins,getAllNestedJvmJars,findLauncherJar,findPdeBuildXml">
+
+		<fail unless="eclipseBase">eclipseBase property must be set</fail>
+		<fail unless="dominoProgDir">dominoProgDir property must be set</fail>
+
+<!--		<fail unless="otherPluginsDir">otherPluginsDir must be set</fail> -->
+
+		<pathconvert targetos="unix" property="otherPluginsDir.unix">
+			<path location="${otherPluginsDir}" />
+		</pathconvert>
+
+		<pathconvert targetos="unix" property="dominoProgDir.unix">
+			<path location="${dominoProgDir}" />
+		</pathconvert>
+
+		<echo message="Other plugins dir: ${otherPluginsDir.unix}" />
+
+		<java jar="${equinoxLauncherJar}" fork="true" failonerror="true">
+
+			<arg value="-application" />
+			<arg value="org.eclipse.ant.core.antRunner" />
+
+			<arg value="-buildfile" />
+			<arg value="${pdeBuildXml}" />
+
+			<arg value="-Dbuilder=${buildConfigDir}" />
+			<arg value="-DbuildDirectory=${buildDir}" />
+
+			<arg value="-DskipMaps=true" />
+			<arg value="-DskipFetch=true" />
+			<arg value="-DrunPackager=false" />
+			<arg value="-DoutputUpdateJars=true" />
+
+			<arg value="-DbuildId=${buildId}" />
+			<arg value="-DbuildLabel=${buildLabel}" />
+
+			<arg value="-DarchivePrefix=eclipse" />
+
+			<arg value="-Dbase=${eclipseBase}" />
+			<arg value="-DbaseLocation=${eclipseBase}" />
+
+			<arg value="-DskipBase=true" />
+
+			<arg value="-DpluginPath=${dominoProgDir.unix}/osgi/rcp/eclipse;${dominoProgDir.unix}/osgi/shared/eclipse;${otherPluginsDir.unix}" />
+			
+			<arg value="-DJavaSE-1.6=${JavaSE16Jars}" />
+			
+			<arg value="-DtopLevelElementType=feature" />
+			<arg value="-DtopLevelElementId=${featureId}" />
+
+			<arg value="-DcompilerArg=-g" />
+
+		</java>
+
+	</target>
+
+		
+	<target name="removePluginsFromDomino">
+
+		<fail unless="dominoDataDir">dominoDataDir must be set</fail>
+
+		<echo>${dominoPluginsDir}</echo>
+
+		<delete>
+			<fileset dir="${dominoPluginsDir}" includes="com.jord.hapi.jobfiles_*.jar" />
+		</delete>
+
+		<delete>
+			<fileset dir="${dominoPluginsDir}" includes="com.jord.hapi.jobmail_*.jar" />
+		</delete>
+
+		<delete>
+			<fileset dir="${dominoPluginsDir}" includes="com.jord.hapi.jobhub_*.jar" />
+		</delete>
+
+		<delete>
+			<fileset dir="${dominoFeaturesDir}" includes="com.jord.hapi.jobhub.feature_*.jar" />
+		</delete>
+
+	</target>
+
+	<target name="unzipBuiltPlugins">
+
+		<unzip src="${builtPluginsZip}" dest="." />
+
+	</target>
+
+	<target name="copyPluginsToDomino">
+
+		<fail unless="dominoDataDir">dominoDataDir must be set</fail>
+
+		<unzip src="${builtPluginsZip}" dest="${dominoPluginsDir}">
+			<patternset>
+				<include name="**/plugins/*.jar" />
+			</patternset>
+			<mapper type="flatten" />
+		</unzip>
+
+		<unzip src="${builtPluginsZip}" dest="${dominoFeaturesDir}">
+			<patternset>
+				<include name="**/features/*.jar" />
+			</patternset>
+			<mapper type="flatten" />
+		</unzip>
+
+	</target>
+
+	<target name="clearUpdateSite">
+
+		<fail unless="updateSiteDir">updateSiteDir must be set</fail>
+
+		<echo>${updateSiteDir}</echo>
+
+		<delete>
+			<fileset dir="${updateSitePluginsDir}" includes="com.jord.hapi.jobhub_*.jar" />
+		</delete>
+
+		<delete>
+			<fileset dir="${updateSiteFeaturesDir}" includes="com.jord.hapi.jobhub.feature_*.jar" />
+		</delete>
+
+	</target>
+
+	<target name="copyPluginsToUpdateSite" depends="clearUpdateSite">
+
+		<fail unless="updateSiteDir">updateSiteDir must be set</fail>
+
+		<unzip src="${builtPluginsZip}" dest="${updateSitePluginsDir}">
+			<patternset>
+				<include name="**/plugins/*.jar" />
+			</patternset>
+			<mapper type="flatten" />
+		</unzip>
+
+		<unzip src="${builtPluginsZip}" dest="${updateSiteFeaturesDir}">
+			<patternset>
+				<include name="**/features/*.jar" />
+			</patternset>
+			<mapper type="flatten" />
+		</unzip>
+
+		<java jar="${siteXmlGeneratorJar}" fork="true">
+			<arg path="${updateSiteDir}">
+			</arg>
+		</java>
+
+	</target>
+
+	<target name="deployPlugins" depends="copyPlugins,buildPlugins,copyPluginsToDomino,unzipBuiltPlugins,copyPluginsToUpdateSite">
+	</target>
+	
+</project>
