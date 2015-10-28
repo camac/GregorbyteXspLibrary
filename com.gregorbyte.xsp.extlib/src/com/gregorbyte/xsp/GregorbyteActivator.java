@@ -3,11 +3,23 @@ package com.gregorbyte.xsp;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class Activator implements BundleActivator {
+import com.gregorbyte.xsp.extlib.minifier.GregorbyteControlsLoader;
+import com.gregorbyte.xsp.extlib.minifier.GregorbyteLoaderExtension;
 
+public class GregorbyteActivator implements BundleActivator {
+
+	public static GregorbyteActivator instance;
+	
 	private static BundleContext context;
+	
+	public GregorbyteActivator() {
+		instance = this;
+		
+		GregorbyteLoaderExtension.getExtensions().add(new GregorbyteControlsLoader());
+		
+	}
 
-	static BundleContext getContext() {
+	public static BundleContext getContext() {
 		return context;
 	}
 
@@ -17,7 +29,7 @@ public class Activator implements BundleActivator {
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 
-		Activator.context = bundleContext;		
+		GregorbyteActivator.context = bundleContext;		
 		System.out.println("Gregorbyte Extlib: started");
 			
 	}
@@ -28,7 +40,7 @@ public class Activator implements BundleActivator {
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 
-		Activator.context = null;
+		GregorbyteActivator.context = null;
 		System.out.println("Gregorbyte ExtLib: stopped");
 		
 	}
