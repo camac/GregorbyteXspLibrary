@@ -1,12 +1,12 @@
-package com.gregorbyte.xsp.extlib.minifier;
+package com.gregorbyte.xsp.minifier;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-import com.gregorbyte.xsp.extlib.log.GregorbyteLogger;
-import com.gregorbyte.xsp.extlib.resources.GregorbyteResourceProvider;
-import com.gregorbyte.xsp.extlib.util.GregorbyteUtil;
+import com.gregorbyte.xsp.log.GregorbyteLogger;
+import com.gregorbyte.xsp.resources.GregorbyteResourceProvider;
+import com.gregorbyte.xsp.util.GregorbyteUtil;
 import com.ibm.commons.util.StringUtil;
 import com.ibm.xsp.context.DojoLibrary;
 import com.ibm.xsp.minifier.CSSResource;

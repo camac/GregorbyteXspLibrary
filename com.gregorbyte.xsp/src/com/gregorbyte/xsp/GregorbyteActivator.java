@@ -3,8 +3,8 @@ package com.gregorbyte.xsp;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-import com.gregorbyte.xsp.extlib.minifier.GregorbyteControlsLoader;
-import com.gregorbyte.xsp.extlib.minifier.GregorbyteLoaderExtension;
+import com.gregorbyte.xsp.minifier.GregorbyteControlsLoader;
+import com.gregorbyte.xsp.minifier.GregorbyteLoaderExtension;
 
 public class GregorbyteActivator implements BundleActivator {
 

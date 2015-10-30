@@ -1,4 +1,4 @@
-package com.gregorbyte.xsp.extlib.log;
+package com.gregorbyte.xsp.log;
 
 import com.ibm.commons.log.Log;
 import com.ibm.commons.log.LogMgr;

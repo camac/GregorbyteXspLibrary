@@ -1,4 +1,4 @@
-package com.gregorbyte.xsp.extlib.minifier;
+package com.gregorbyte.xsp.minifier;
 
 import java.net.URL;
 import java.util.ArrayList;

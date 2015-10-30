@@ -1,12 +1,12 @@
-package com.gregorbyte.xsp.extlib.resources;
+package com.gregorbyte.xsp.resources;
 
 import java.net.URL;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.gregorbyte.xsp.extlib.log.GregorbyteLogger;
-import com.gregorbyte.xsp.extlib.minifier.GregorbyteLoaderExtension;
+import com.gregorbyte.xsp.log.GregorbyteLogger;
+import com.gregorbyte.xsp.minifier.GregorbyteLoaderExtension;
 import com.ibm.xsp.webapp.FacesResourceServlet;
 import com.ibm.xsp.webapp.resources.URLResourceProvider;
 

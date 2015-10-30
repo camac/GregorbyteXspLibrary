@@ -4,7 +4,7 @@
    <extension
          point="com.ibm.commons.Extension">
       <service
-            class="com.gregorbyte.xsp.extlib.resources.GregorbyteResourceProvider"
+            class="com.gregorbyte.xsp.resources.GregorbyteResourceProvider"
             type="com.ibm.xsp.GlobalResourceProvider">
       </service>
    </extension>
@@ -18,7 +18,7 @@
    <extension
          point="com.ibm.commons.Extension">
       <service
-            class="com.gregorbyte.xsp.extlib.minifier.GregorbyteLoader"
+            class="com.gregorbyte.xsp.minifier.GregorbyteLoader"
             type="com.ibm.xsp.minifier.loader">
       </service>
    </extension>

@@ -1,4 +1,4 @@
-package com.gregorbyte.xsp.extlib.util;
+package com.gregorbyte.xsp.util;
 
 import java.net.URL;
 import java.util.Enumeration;

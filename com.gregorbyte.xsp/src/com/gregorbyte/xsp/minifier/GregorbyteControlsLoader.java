@@ -1,4 +1,4 @@
-package com.gregorbyte.xsp.extlib.minifier;
+package com.gregorbyte.xsp.minifier;
 
 import java.net.URL;
 
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.osgi.framework.Bundle;
 
 import com.gregorbyte.xsp.GregorbyteActivator;
-import com.gregorbyte.xsp.extlib.resources.GregorbyteResourceProvider;
-import com.gregorbyte.xsp.extlib.util.GregorbyteUtil;
+import com.gregorbyte.xsp.resources.GregorbyteResourceProvider;
+import com.gregorbyte.xsp.util.GregorbyteUtil;
 import com.ibm.commons.util.DoubleMap;
 
 public class GregorbyteControlsLoader extends GregorbyteLoaderExtension {
