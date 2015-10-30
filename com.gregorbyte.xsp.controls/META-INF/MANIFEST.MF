@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gregorbyte Controls Plugin
+Bundle-SymbolicName: com.gregorbyte.xsp.controls;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.gregorbyte.xsp.controls.Activator
+Bundle-Vendor: Gregorbyte
+Require-Bundle: org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
