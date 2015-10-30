@@ -11,7 +11,7 @@
    <extension
          point="com.ibm.commons.Extension">
       <service
-            class="com.gregorbyte.xsp.config.GregorbyteXspLibrary"
+            class="com.gregorbyte.xsp.library.GregorbyteXspLibrary"
             type="com.ibm.xsp.Library">
       </service>
    </extension>
@@ -20,6 +20,13 @@
       <service
             class="com.gregorbyte.xsp.minifier.GregorbyteLoader"
             type="com.ibm.xsp.minifier.loader">
+      </service>
+   </extension>
+   <extension
+         point="com.ibm.commons.Extension">
+      <service
+            class="com.gregorbyte.xsp.resources.GregorbyteModulePath"
+            type="com.ibm.xsp.resource.DojoModulePathResource">
       </service>
    </extension>
 

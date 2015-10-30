@@ -6,20 +6,22 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.osgi.framework.Bundle;
 
-import com.gregorbyte.xsp.GregorbyteActivator;
+
+
+import com.gregorbyte.xsp.plugin.GregorbyteCoreActivator;
 import com.gregorbyte.xsp.resources.GregorbyteResourceProvider;
 import com.gregorbyte.xsp.util.GregorbyteUtil;
 import com.ibm.commons.util.DoubleMap;
 
-public class GregorbyteControlsLoader extends GregorbyteLoaderExtension {
+public class GregorbyteCoreLoader extends GregorbyteLoaderExtension {
 
-	public GregorbyteControlsLoader() {
+	public GregorbyteCoreLoader() {
 	
 	}
 	
 	@Override
 	public Bundle getOSGiBundle() {
-		return GregorbyteActivator.getContext().getBundle();
+		return GregorbyteCoreActivator.getContext().getBundle();
 	}
 	
 	@Override

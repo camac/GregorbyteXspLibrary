@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="com.gregorbyte.xsp.extlib.feature"
+      id="com.gregorbyte.xsp.feature"
       label="Gregorbyte ExtLib Feature"
       version="1.0.0.qualifier"
       provider-name="Gregorbyte">
@@ -18,7 +18,21 @@
    </license>
 
    <plugin
-         id="com.gregorbyte.xsp.extlib"
+         id="com.gregorbyte.xsp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.gregorbyte.xsp.controls"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.gregorbyte.xsp.core"
          download-size="0"
          install-size="0"
          version="0.0.0"

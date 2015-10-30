@@ -3,15 +3,14 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Gregorbyte Xsp Library
 Bundle-SymbolicName: com.gregorbyte.xsp;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: com.gregorbyte.xsp.GregorbyteActivator
+Bundle-Activator: com.gregorbyte.xsp.plugin.GregorbyteActivator
 Bundle-Vendor: Gregorbyte
 Require-Bundle: org.eclipse.core.runtime,
  com.ibm.xsp.extsn,
  com.ibm.commons,
- com.gregorbyte.xsp.controls;visibility:=reexport
+ com.gregorbyte.xsp.controls;visibility:=reexport,
+ com.gregorbyte.xsp.core;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Export-Package: com.gregorbyte.xsp,
- com.gregorbyte.xsp.config,
- com.gregorbyte.xsp.minifier,
- com.gregorbyte.xsp.resources,
- com.gregorbyte.xsp.util
+Export-Package: com.gregorbyte.xsp.library,
+ com.gregorbyte.xsp.plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

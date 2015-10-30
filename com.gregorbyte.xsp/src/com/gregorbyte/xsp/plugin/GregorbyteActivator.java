@@ -1,9 +1,9 @@
-package com.gregorbyte.xsp;
+package com.gregorbyte.xsp.plugin;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-import com.gregorbyte.xsp.minifier.GregorbyteControlsLoader;
+import com.gregorbyte.xsp.minifier.GregorbyteCoreLoader;
 import com.gregorbyte.xsp.minifier.GregorbyteLoaderExtension;
 
 public class GregorbyteActivator implements BundleActivator {
@@ -15,7 +15,7 @@ public class GregorbyteActivator implements BundleActivator {
 	public GregorbyteActivator() {
 		instance = this;
 		
-		GregorbyteLoaderExtension.getExtensions().add(new GregorbyteControlsLoader());
+		GregorbyteLoaderExtension.getExtensions().add(new GregorbyteCoreLoader());
 		
 	}
 
