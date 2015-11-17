@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+	<xp:this.beforePageLoad><![CDATA[#{javascript:viewScope.fromText = "My Favourite Animal is a Liger";
+viewScope.toText = "My Favourite Food is Pizza ";}]]></xp:this.beforePageLoad>
+	<h1>Text Difference Demo</h1>
+
+	<xp:table>
+		<xp:tr>
+			<xp:td>
+				<xp:label value="From" id="label1"></xp:label>
+			</xp:td>
+			<xp:td>
+				<xp:label value="To" id="label2"></xp:label>
+			</xp:td>
+		</xp:tr>
+
+		<xp:tr>
+			<xp:td>
+				<xp:inputTextarea id="inputTextarea1" value="#{viewScope.fromText}"
+					rows="5" cols="40">
+					<xp:eventHandler event="onchange" submit="true"
+						refreshMode="complete">
+					</xp:eventHandler>
+				</xp:inputTextarea>
+			</xp:td>
+			<xp:td>
+				<xp:inputTextarea id="inputTextarea2" value="#{viewScope.toText}"
+					rows="5" cols="40">
+					<xp:eventHandler event="onchange" submit="true"
+						refreshMode="complete">
+					</xp:eventHandler>
+				</xp:inputTextarea>
+			</xp:td>
+		</xp:tr>
+
+		<xp:tr>
+			<xp:td>Using Defaults</xp:td>
+			<xp:td>Using Options</xp:td>
+		</xp:tr>
+		<xp:tr>
+			<xp:td>
+				<gb:textDiff id="textDiff1" from="#{viewScope.fromText}"
+					to="#{viewScope.toText}" disableTheme="true">
+				</gb:textDiff>
+			</xp:td>
+			<xp:td>
+				<gb:textDiff id="textDiff2" from="#{viewScope.fromText}"
+					to="#{viewScope.toText}" cleanup="#{viewScope.cleanup}" editCost="#{viewScope.editCost}"
+					timeout="#{viewScope.timeout}">
+				</gb:textDiff>
+			</xp:td>
+		</xp:tr>
+
+	</xp:table>
+
+	<xp:table>
+		<xp:tr>
+			<xp:td></xp:td>
+			<xp:td></xp:td>
+			<xp:td>Default</xp:td>
+		</xp:tr>
+		<xp:tr>
+			<xp:td>
+				<xp:label value="Cleanup Type" id="label3"></xp:label>
+			</xp:td>
+			<xp:td>
+				<xp:comboBox id="comboBox1"
+					value="#{viewScope.cleanup}">
+					<xp:selectItem itemLabel="Semantic"
+						itemValue="semantic" id="selectItem1">
+					</xp:selectItem>
+					<xp:selectItem itemLabel="Efficiency"
+						itemValue="efficiency" id="selectItem2">
+					</xp:selectItem>
+					<xp:selectItem itemLabel="No Cleanup"
+						itemValue="nocleanup" id="selectItem3">
+					</xp:selectItem>
+				</xp:comboBox>
+			</xp:td>
+			<xp:td>No Cleanup</xp:td>
+		</xp:tr>
+		<xp:tr>
+			<xp:td>
+				<xp:label value="Edit Cost" id="label4"></xp:label>
+			</xp:td>
+			<xp:td>
+				<xe:djNumberTextBox id="djNumberTextBox1"
+					value="#{viewScope.editCost}" javaType="short">
+				</xe:djNumberTextBox>
+			</xp:td>
+			<xp:td>4</xp:td>
+		</xp:tr>
+		<xp:tr>
+			<xp:td>
+				<xp:label value="Timeout" id="label5"></xp:label>
+			(seconds)</xp:td>
+			<xp:td>
+				<xe:djNumberTextBox id="djNumberTextBox2"
+					value="#{viewScope.timeout}" javaType="float">
+				</xe:djNumberTextBox>
+			</xp:td>
+			<xp:td>1</xp:td>
+		</xp:tr>
+	</xp:table>
+	<xp:button value="Submit" id="button1">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+		</xp:eventHandler>
+	</xp:button>
+
+
+
+</xp:view>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/"
+	style="padding-left:10.0px;padding-top:10.0px">
+	<xp:this.data>
+		<xp:dominoDocument formName="MimeInspectorExample"
+			var="example">
+		</xp:dominoDocument>
+	</xp:this.data>
+
+	<xp:this.beforePageLoad><![CDATA[#{javascript:viewScope.showContent = false;
+viewScope.showHeaders = false;}]]></xp:this.beforePageLoad>
+	<h1>Demo of InputRichText problems</h1>
+	<xp:table cellpadding="10" cellspacing="10">
+		<xp:tr>
+			<xp:td>
+				<xp:label value="Description" id="label1"></xp:label>
+			</xp:td>
+			<xp:td>
+				<xp:inputText id="inputText1" value="#{example.subject}">
+				</xp:inputText>
+			</xp:td>
+		</xp:tr>
+		<xp:tr>
+			<xp:td colspan="2">
+				<xp:inputRichText id="inputRichText1" value="#{example.body}">
+				</xp:inputRichText>
+			</xp:td>
+		</xp:tr>
+
+		<xp:tr>
+			<xp:td colspan="2">
+				<xp:fileUpload id="fileUpload1" value="#{example.body}"></xp:fileUpload>
+			</xp:td>
+		</xp:tr>
+		<xp:tr>
+			<xp:td colspan="2">
+				<xp:fileDownload rows="30" id="fileDownload1"
+					displayLastModified="false" value="#{example.body}">
+				</xp:fileDownload>
+			</xp:td>
+		</xp:tr>
+
+	</xp:table>
+
+	<xp:button value="Submit" id="buttonSubmit">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+		</xp:eventHandler>
+	</xp:button>
+	<xp:button value="Edit" id="button1">
+
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+			<xp:this.action>
+				<xp:changeDocumentMode mode="edit" var="example"></xp:changeDocumentMode>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+
+	<xp:button value="Save Example" id="buttonSave">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+			<xp:this.action>
+				<xp:saveDocument var="example"></xp:saveDocument>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+	<xp:button value="Back to List" id="button3"><xp:eventHandler event="onclick" submit="true" refreshMode="complete">
+	<xp:this.action>
+		<xp:openPage name="/Examples.xsp"></xp:openPage>
+	</xp:this.action></xp:eventHandler></xp:button>
+
+	<hr></hr>
+
+	<h2>Debugging info</h2>
+
+	<xp:table width="100%">
+		<xp:tr>
+			<xp:td style="width: 50%;">Server Side</xp:td>
+			<xp:td style="width: 50%;">Client Side</xp:td>
+		</xp:tr>
+		<xp:tr>
+			<xp:td>
+				<xp:table>
+					<xp:tr>
+						<xp:td>
+							<xp:label value="Show Mime Headers" id="label2"></xp:label>
+						</xp:td>
+						<xp:td>
+							<xp:comboBox id="comboBox1" value="#{viewScope.showHeaders}">
+								<xp:selectItem itemLabel="False" itemValue="${false}">
+								</xp:selectItem>
+								<xp:selectItem itemLabel="True" itemValue="${true}">
+								</xp:selectItem>
+								<xp:eventHandler event="onchange" submit="true"
+									refreshMode="complete" disableValidators="true">
+								</xp:eventHandler>
+							</xp:comboBox>
+						</xp:td>
+					</xp:tr>
+					<xp:tr>
+						<xp:td>
+							<xp:label value="Show Mime Content" id="label3"></xp:label>
+						</xp:td>
+						<xp:td>
+							<xp:comboBox id="comboBox2" value="#{viewScope.showContent}">
+								<xp:selectItem itemLabel="False" itemValue="${false}">
+								</xp:selectItem>
+								<xp:selectItem itemLabel="True" itemValue="${true}">
+								</xp:selectItem>
+								<xp:eventHandler event="onchange" submit="true"
+									refreshMode="complete" disableValidators="true">
+								</xp:eventHandler>
+							</xp:comboBox>
+
+						</xp:td>
+					</xp:tr>
+				</xp:table>
+			</xp:td>
+			<xp:td>
+				<xp:button value="GetData()" id="button2"
+					rendered="#{javascript:return example.isEditable();}">
+					<xp:eventHandler event="onclick" submit="false">
+						<xp:this.script><![CDATA[var richCKEditor = CKEDITOR.instances["#{id:inputRichText1}"]; 
+var dt=richCKEditor.getData();
+var content = richCKEditor.dataProcessor.toHtml(dt);
+
+var textArea = XSP.getElementById("#{id:inputTextarea1}");
+
+textArea.value = dt;]]></xp:this.script>
+					</xp:eventHandler>
+				</xp:button>
+			</xp:td>
+		</xp:tr>
+
+		<xp:tr>
+			<xp:td valign="top">
+				<gb:mimeInspector id="mimeInspector1"
+					value="#{example.body}" showHeaders="#{viewScope.showHeaders}"
+					showContent="#{viewScope.showContent}">
+				</gb:mimeInspector>
+			</xp:td>
+			<xp:td valign="top">
+				<xp:inputTextarea id="inputTextarea1" disabled="true"
+					style="width: 80%;" rows="300">
+				</xp:inputTextarea>
+			</xp:td>
+		</xp:tr>
+	</xp:table>
+
+
+</xp:view>

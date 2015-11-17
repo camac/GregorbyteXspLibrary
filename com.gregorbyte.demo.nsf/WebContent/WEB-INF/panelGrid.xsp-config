@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+
+	<faces-config-extension>
+		<namespace-uri>http://www.gregorbyte.com/xsp/
+		</namespace-uri>
+		<default-prefix>gb</default-prefix>
+	</faces-config-extension>
+
+	<component>
+
+		<description>Arranges Child Controls as a Grid
+		</description>
+		<display-name>Panel Grid</display-name>
+		<component-type>com.gregorbyte.xsp.PanelGrid
+		</component-type>
+		<component-class>com.gregorbyte.xsp.component.UIPanelGrid
+		</component-class>
+
+		<icon>
+			<small-icon>/designer/icons/Ctrl_16x16.gif
+			</small-icon>
+			<large-icon>/designer/icons/Ctrl_32x32.gif
+			</large-icon>
+		</icon>
+
+		<property>
+			<description>Number of Columns in the Grid</description>
+			<display-name>Columns</display-name>
+			<property-name>columns</property-name>
+			<property-class>java.lang.Integer</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>basics</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<property>
+			<description>Header Style Class</description>
+			<display-name>Header Style Class</display-name>
+			<property-name>headerClass</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>styling</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<property>
+			<description>Footer Style Class</description>
+			<display-name>Footer Style Class</display-name>
+			<property-name>footerClass</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>styling</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+		<property>
+			<description>Column Classes (comma separated)</description>
+			<display-name>Column Classes</display-name>
+			<property-name>columnClasses</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>styling</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+		<property>
+			<description>Row Classes (comma separated)</description>
+			<display-name>Row Classes</display-name>
+			<property-name>rowClasses</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>styling</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+		<property>
+			<description>Background Color</description>
+			<display-name>Background Color</display-name>
+			<property-name>bgcolor</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>format</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+		<property>
+			<description>Frame</description>
+			<display-name>Frame</display-name>
+			<property-name>frame</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>format</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<component-extension>
+
+			<base-component-type>com.ibm.xsp.Table
+			</base-component-type>
+
+			<component-family>com.ibm.xsp.Tag
+			</component-family>
+			<renderer-type>com.gregorbyte.PanelGrid
+			</renderer-type>
+
+			<tag-name>panelGrid</tag-name>
+
+			<designer-extension>
+
+				<category>Gregorbyte</category>
+				<render-markup>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;xp:view xmlns:xp=&quot;http://www.ibm.com/xsp/core&quot;&gt;
+	&lt;xp:table&gt;
+		&lt;xp:tr&gt;
+			&lt;xp:td colspan=&quot;2&quot;&gt;
+				&lt;xp:callback facetName=&quot;header&quot; id=&quot;callbackHeader&quot;&gt;&lt;/xp:callback&gt;
+			&lt;/xp:td&gt;
+		&lt;/xp:tr&gt;
+		&lt;xp:tr&gt;
+			&lt;xp:td&gt;&lt;/xp:td&gt;
+			&lt;xp:td&gt;&lt;/xp:td&gt;
+		&lt;/xp:tr&gt;
+		&lt;xp:tr&gt;
+			&lt;xp:td colspan=&quot;2&quot;&gt;
+				&lt;xp:callback facetName=&quot;footer&quot; id=&quot;callbackFooter&quot;&gt;&lt;/xp:callback&gt;
+			&lt;/xp:td&gt;
+		&lt;/xp:tr&gt;
+	&lt;/xp:table&gt;
+&lt;/xp:view&gt;</render-markup>
+			</designer-extension>
+		</component-extension>
+	</component>
+
+</faces-config>

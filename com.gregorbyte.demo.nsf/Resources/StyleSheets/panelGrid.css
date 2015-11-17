@@ -1,0 +1,30 @@
+
+.header {
+	background-color: red;	
+}
+
+.column1 {
+	background-color: green;
+}
+
+.column2 {
+	background-color: gold;
+}
+
+.rowOdd {
+	color: silver;
+}
+
+.rowEven {
+	color: white;
+}
+
+.footer {
+	background-color: yellow;
+}
+
+.columnBlack {
+	background-color: black;
+	color: white;
+}
+

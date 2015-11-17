@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+	<xp:this.resources>
+		<xp:styleSheet href="/panelGrid.css"></xp:styleSheet>
+	</xp:this.resources>
+
+	<h1>Panel Grid</h1>
+
+	<gb:panelGrid id="panelGrid1" columns="4" rowClasses="rowOdd,rowEven"
+		columnClasses="column1,column2" footerClass="footer" headerClass="header"
+		cellpadding="5" cellspacing="0" bgcolor="black" dir="ltr" frame="box">
+		<xp:this.facets>
+			<xp:panel xp:key="footer">
+				<xp:button value="Submit" id="button1"></xp:button>
+			</xp:panel>
+			<xp:panel xp:key="header">
+				<xp:text escape="true" id="computedField1" value="Panel Grid"></xp:text>
+			</xp:panel>
+		</xp:this.facets>
+
+
+
+		<xp:label value="Label" id="label1"></xp:label>
+		<xp:inputText id="inputText1"></xp:inputText>
+
+		<xp:label value="Label" id="label2"></xp:label>
+		<xp:inputText id="inputText2"></xp:inputText>
+
+		<xp:label value="Label" id="label3"></xp:label>
+		<xp:inputText id="inputText3"></xp:inputText>
+
+		<xp:label value="Label" id="label4"></xp:label>
+		<xp:inputText id="inputText4"></xp:inputText>
+
+
+	</gb:panelGrid>
+
+	<h3>Themed Panel Grid</h3>
+
+	<gb:panelGrid id="panelGrid2" themeId="PanelGrid.Black">
+
+		<xp:label value="Label" id="label5"></xp:label>
+		<xp:inputText id="inputText5"></xp:inputText>
+
+		<xp:label value="Label" id="label6"></xp:label>
+		<xp:inputText id="inputText6"></xp:inputText>
+
+		<xp:label value="Label" id="label7"></xp:label>
+		<xp:inputText id="inputText7"></xp:inputText>
+
+		<xp:label value="Label" id="label8"></xp:label>
+		<xp:inputText id="inputText8"></xp:inputText>
+
+
+	</gb:panelGrid>
+
+</xp:view>
