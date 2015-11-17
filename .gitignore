@@ -6,3 +6,6 @@ buildDirectory/
 com.gregorbyte.xsp.updatesite/plugins/com.gregorbyte.xsp.controls_1.0.0.201510302249.jar
 com.gregorbyte.xsp.updatesite/features/
 com.gregorbyte.xsp.updatesite/
+com.gregorbyte.xsp.controls/src/rebel.xml
+com.gregorbyte.xsp.core/src/rebel.xml
+com.gregorbyte.xsp/src/rebel.xml

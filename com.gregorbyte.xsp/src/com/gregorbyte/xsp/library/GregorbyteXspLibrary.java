@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gregorbyte.xsp.config.ControlsConfig;
+import com.gregorbyte.xsp.config.CoreConfig;
 import com.gregorbyte.xsp.config.GregorbytePluginConfig;
 import com.ibm.xsp.library.AbstractXspLibrary;
 
@@ -66,6 +67,7 @@ public class GregorbyteXspLibrary extends AbstractXspLibrary {
 
 			configs = new ArrayList<GregorbytePluginConfig>();
 			configs.add(new ControlsConfig());
+			configs.add(new CoreConfig());
 
 		}
 

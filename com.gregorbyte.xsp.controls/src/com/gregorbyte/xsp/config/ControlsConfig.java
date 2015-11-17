@@ -6,6 +6,7 @@ public class ControlsConfig extends GregorbytePluginConfig {
 	public String[] getXspConfigFiles(String[] files) {
 		return concat(files, new String[] {
 				"com/gregorbyte/xsp/config/gregorbyte-textdiff.xsp-config", // $NON-NLS-1$
+				"com/gregorbyte/xsp/config/gregorbyte-mimeinspector.xsp-config", // $NON-NLS-1$
 		});
 	}
 

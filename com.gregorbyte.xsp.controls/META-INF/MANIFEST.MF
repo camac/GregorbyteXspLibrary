@@ -8,7 +8,8 @@ Bundle-Vendor: Gregorbyte
 Require-Bundle: org.eclipse.core.runtime,
  com.ibm.designer.lib.jsf,
  com.ibm.xsp.extsn,
- com.gregorbyte.xsp.core
+ com.gregorbyte.xsp.core,
+ com.ibm.xsp.domino
 Bundle-ActivationPolicy: lazy
 Export-Package: com.gregorbyte.xsp.component,
  com.gregorbyte.xsp.config,
