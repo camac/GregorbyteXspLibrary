@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+	<xp:table>
+		<xp:tr>
+			<xp:td>
+				<xp:label value="Label" id="label1"></xp:label>
+			</xp:td>
+			<xp:td>
+				<xp:inputText id="inputText1"></xp:inputText>
+			</xp:td>
+		</xp:tr>
+		<xp:tr>
+			<xp:td>
+				<xp:label value="Label" id="label2"></xp:label>
+			</xp:td>
+			<xp:td>
+				<xp:inputText id="inputText2"></xp:inputText>
+			</xp:td>
+		</xp:tr>
+		<xp:tr>
+			<xp:td>
+				<xp:label value="Label" id="label3"></xp:label>
+			</xp:td>
+			<xp:td>
+				<xp:inputText id="inputText3"></xp:inputText>
+			</xp:td>
+		</xp:tr>
+		<xp:tr>
+			<xp:td>
+				<xp:label value="Label" id="label4"></xp:label>
+			</xp:td>
+			<xp:td>
+				<xp:inputText id="inputText4"></xp:inputText>
+			</xp:td>
+		</xp:tr>
+	</xp:table>
+</xp:view>
