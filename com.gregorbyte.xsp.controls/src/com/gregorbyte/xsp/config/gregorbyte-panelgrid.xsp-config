@@ -2,8 +2,7 @@
 <faces-config>
 
 	<faces-config-extension>
-		<namespace-uri>http://www.gregorbyte.com/xsp/
-		</namespace-uri>
+		<namespace-uri>http://www.gregorbyte.com/xsp/</namespace-uri>
 		<default-prefix>gb</default-prefix>
 	</faces-config-extension>
 
@@ -16,13 +15,6 @@
 		</component-type>
 		<component-class>com.gregorbyte.xsp.component.UIPanelGrid
 		</component-class>
-
-		<icon>
-			<small-icon>/designer/icons/Ctrl_16x16.gif
-			</small-icon>
-			<large-icon>/designer/icons/Ctrl_32x32.gif
-			</large-icon>
-		</icon>
 
 		<property>
 			<description>Number of Columns in the Grid</description>
@@ -124,7 +116,7 @@
 			<tag-name>panelGrid</tag-name>
 
 			<designer-extension>
-
+				<in-palette>true</in-palette>
 				<category>Gregorbyte</category>
 				<render-markup>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;xp:view xmlns:xp=&quot;http://www.ibm.com/xsp/core&quot;&gt;
@@ -135,8 +127,9 @@
 			&lt;/xp:td&gt;
 		&lt;/xp:tr&gt;
 		&lt;xp:tr&gt;
-			&lt;xp:td&gt;&lt;/xp:td&gt;
-			&lt;xp:td&gt;&lt;/xp:td&gt;
+			&lt;xp:td colspan=&quot;2&quot;&gt;
+				&lt;xp:callback id=&quot;childrenArea&quot;&gt;&lt;/xp:callback&gt;
+			&lt;/xp:td&gt;
 		&lt;/xp:tr&gt;
 		&lt;xp:tr&gt;
 			&lt;xp:td colspan=&quot;2&quot;&gt;

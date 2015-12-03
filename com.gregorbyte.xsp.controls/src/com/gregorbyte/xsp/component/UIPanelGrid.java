@@ -6,6 +6,8 @@ import com.ibm.xsp.component.xp.XspTable;
 
 public class UIPanelGrid extends XspTable {
 
+	public static final String STYLEKIT_FAMILY = "Text.Diff";
+	
 	private Integer columns = null;
 
 	private String headerClass = null;
@@ -23,6 +25,10 @@ public class UIPanelGrid extends XspTable {
 
 	}
 
+	@Override
+	public String getStyleKitFamily() {
+		return STYLEKIT_FAMILY;
+	}
 	
 	public Integer getColumns() {
 

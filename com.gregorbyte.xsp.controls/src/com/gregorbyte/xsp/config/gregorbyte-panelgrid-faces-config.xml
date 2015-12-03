@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+	<render-kit>
+		<renderer>
+			<component-family>com.ibm.xsp.Tag</component-family>
+			<renderer-type>com.gregorbyte.PanelGrid</renderer-type>
+			<renderer-class>com.sun.faces.renderkit.html_basic.GridRenderer</renderer-class>
+		</renderer>
+	</render-kit>
+</faces-config>
+    
