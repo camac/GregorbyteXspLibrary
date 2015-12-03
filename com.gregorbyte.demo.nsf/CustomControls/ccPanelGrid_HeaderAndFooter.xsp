@@ -2,10 +2,7 @@
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core"
 	xmlns:gb="http://www.gregorbyte.com/xsp/">
 	
-	<gb:panelGrid id="panelGrid1" columns="4"
-		rowClasses="rowOdd,rowEven" columnClasses="column1,column2"
-		footerClass="footer" headerClass="header" cellpadding="5"
-		cellspacing="0" bgcolor="black" dir="ltr" frame="box">
+	<gb:panelGrid id="panelGrid1" columns="4">
 
 		<xp:this.facets>
 			<xp:panel xp:key="footer">

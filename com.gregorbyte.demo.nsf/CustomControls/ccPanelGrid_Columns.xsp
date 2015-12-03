@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
 
-	<xp:radioGroup id="radioGroup1" value="#{viewScope.panelGridColumns}"
-		defaultValue="2">
-		<xp:this.converter>
-			<xp:convertNumber type="number" integerOnly="true"></xp:convertNumber>
-		</xp:this.converter>
-		<xp:selectItem itemLabel="2" itemValue="2"></xp:selectItem>
-		<xp:selectItem itemLabel="3" itemValue="3"></xp:selectItem>
-		<xp:selectItem itemLabel="4" itemValue="4"></xp:selectItem>
-		<xp:eventHandler event="onchange" submit="true"
+
+	<p>Choose between 2 and 8 Columns</p>
+	<xe:djNumberSpinner id="djNumberSpinner1" javaType="int"
+		defaultValue="2" value="#{viewScope.panelGridColumns}">
+		<xe:this.constraints>
+			<xe:djNumberConstraints max="8" min="2"></xe:djNumberConstraints>
+		</xe:this.constraints>
+
+		<xp:eventHandler event="onChange" submit="true"
 			refreshMode="complete" disableValidators="true">
 		</xp:eventHandler>
-	</xp:radioGroup>
+	</xe:djNumberSpinner>
 
 	<gb:panelGrid id="panelGrid1" columns="#{viewScope.panelGridColumns}">
 
-		<xp:label value="Label" id="label1"></xp:label>
-		<xp:inputText id="inputText1"></xp:inputText>
-
-		<xp:label value="Label" id="label2"></xp:label>
-		<xp:inputText id="inputText2"></xp:inputText>
-
-		<xp:label value="Label" id="label3"></xp:label>
-		<xp:inputText id="inputText3"></xp:inputText>
-
-		<xp:label value="Label" id="label4"></xp:label>
-		<xp:inputText id="inputText4"></xp:inputText>
-
+		<xp:label value="Label 1" id="label1"></xp:label>
+		<xp:label value="Label 2" id="label2"></xp:label>
+		<xp:label value="Label 3" id="label3"></xp:label>
+		<xp:label value="Label 4" id="label4"></xp:label>
+		<xp:label value="Label 5" id="label5"></xp:label>
+		<xp:label value="Label 6" id="label6"></xp:label>
+		<xp:label value="Label 7" id="label7"></xp:label>
+		<xp:label value="Label 8" id="label8"></xp:label>
 
 	</gb:panelGrid>
 

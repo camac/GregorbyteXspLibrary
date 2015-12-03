@@ -7,24 +7,44 @@
 
 	<xp:comboBox id="comboBox1" value="#{viewScope.panelGridFacet}"
 		defaultValue="key_Simple">
-		<xp:selectItem itemLabel="Simple" itemValue="key_Simple"></xp:selectItem>
 		<xp:selectItem itemLabel="Compare" itemValue="key_Compare"></xp:selectItem>
-		<xp:selectItem itemLabel="Styled" itemValue="key_Styled"></xp:selectItem>
-		<xp:selectItem itemLabel="Themed" itemValue="key_Themed"></xp:selectItem>
+		<xp:selectItem itemLabel="Simple" itemValue="key_Simple"></xp:selectItem>
+		<xp:selectItem itemLabel="Column Count" itemValue="key_Columns"></xp:selectItem>
 		<xp:selectItem itemLabel="Header and Footer" itemValue="key_HeaderFooter">
 		</xp:selectItem>
 		<xp:selectItem itemLabel="Nested" itemValue="key_Nested"></xp:selectItem>
 
+		<xp:selectItem itemLabel="Styled" itemValue="key_Styled"></xp:selectItem>
+		<xp:selectItem itemLabel="Themed" itemValue="key_Themed"></xp:selectItem>
+
 		<xp:eventHandler event="onchange" submit="true"
-			refreshMode="complete" disableValidators="true">
+			refreshMode="complete">
+			<xp:this.action>
+				<xe:changeDynamicContentAction for="dynamicContent1">
+					<xe:this.facetName><![CDATA[#{viewScope.panelGridFacet
+}]]></xe:this.facetName>
+				</xe:changeDynamicContentAction>
+			</xp:this.action>
 		</xp:eventHandler>
 	</xp:comboBox>
 
 	<hr></hr>
+	<xe:dynamicContent id="dynamicContent1" defaultFacet="key_Simple">
+		<xp:this.facets>
+			<xc:ccPanelGrid_Compare xp:key="key_Compare"></xc:ccPanelGrid_Compare>
+			<xc:ccPanelGrid_Columns xp:key="key_Columns"></xc:ccPanelGrid_Columns>
+			<xc:ccPanelGrid_HeaderAndFooter
+				xp:key="key_HeaderFooter"></xc:ccPanelGrid_HeaderAndFooter>
+			<xc:ccPanelGrid_Nested xp:key="key_Nested"></xc:ccPanelGrid_Nested>
+			<xc:ccPanelGrid_Simple xp:key="key_Simple"></xc:ccPanelGrid_Simple>
+			<xc:ccPanelGrid_Styled xp:key="key_Styled"></xc:ccPanelGrid_Styled>
+			<xc:ccPanelGrid_Themed xp:key="key_Themed"></xc:ccPanelGrid_Themed>
+		</xp:this.facets>
 
+	</xe:dynamicContent>
 
 	<xe:switchFacet id="switchFacet1" selectedFacet="#{viewScope.panelGridFacet}"
-		defaultFacet="key_Simple">
+		defaultFacet="key_Simple" loaded="false">
 		<xp:this.facets>
 			<xc:ccPanelGrid_Compare xp:key="key_Compare"></xc:ccPanelGrid_Compare>
 			<xc:ccPanelGrid_Columns xp:key="key_Columns"></xc:ccPanelGrid_Columns>
