@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<imageresource xmlns="http://www.lotus.com/dxl" name="$DBIcon" publicaccess="false" imagename="V:\Cameron\Dropbox\Computing\Blog\Icon\gregorbyteicon32x32.png">
+  <jpeg>
+iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAABtAAAAbQBTCJN+AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFXSURB
+VFiFvdcvTwMxGMfx37V3O8QE5sK4JbuEKQQgBieAF0EmR5B4NOosCQSNZW8B3sEwJGSoBQQCkhnM
+3gFFEMYE65+nT6+66feTmj6NeuWBAuNK0xTXVxco93aNe8fTEQR7/NIu/jx9wP1kyAeYx0u7+N3k
+FkopHgA1DsAf4BP3BvjGvQAccTKAK04CcMadAdxxJ0CIuDUgVNwKEDIOALExbvmwUOKA5gZcHxZK
+fCkgThpBr10PkAnE/gCvyKwOSOMVRIhIcQCQebtTLcYbh8cQrQ08fcyQSIGd9qr2gKyZI2uu4+Vz
+DAX3W/gDLMR/Vx2IH8A/8boQMu90q2XxOhCyGJxXstU1bgyFkEX/rLKiBkI4P8c3ozcMH9+N+zbX
+euhvn0JE+gRpIOFEkEcyLoTXUMqB8B7LfREsHxMfBNvXjIpg/ZxSENqJiIoAgJOyMCKOtr7wDYnY
+CTe9aTKHAAAAAElFTkSuQmCC
+</jpeg>
+  <item name="$FileSize" sign="true">
+    <number>474</number>
+  </item>
+  <item name="$MimeType" sign="true">
+    <text>image/png</text>
+  </item>
+</imageresource>
