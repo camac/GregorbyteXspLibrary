@@ -36,8 +36,12 @@ viewScope.toText = "My Favourite Food is Pizza ";}]]></xp:this.beforePageLoad>
 		</xp:tr>
 
 		<xp:tr>
-			<xp:td>Using Defaults</xp:td>
-			<xp:td>Using Options</xp:td>
+			<xp:td style="font-weight:bold; border-bottom: 1px solid gray;">
+				Output Using Defaults
+			</xp:td>
+			<xp:td style="font-weight:bold; border-bottom: 1px solid gray;">
+				Output Using Options Specified below
+			</xp:td>
 		</xp:tr>
 		<xp:tr>
 			<xp:td>
@@ -47,61 +51,69 @@ viewScope.toText = "My Favourite Food is Pizza ";}]]></xp:this.beforePageLoad>
 			</xp:td>
 			<xp:td>
 				<gb:textDiff id="textDiff2" from="#{viewScope.fromText}"
-					to="#{viewScope.toText}" cleanup="#{viewScope.cleanup}" editCost="#{viewScope.editCost}"
-					timeout="#{viewScope.timeout}">
+					to="#{viewScope.toText}" cleanup="#{viewScope.cleanup}"
+					editCost="#{viewScope.editCost}" timeout="#{viewScope.timeout}">
 				</gb:textDiff>
 			</xp:td>
 		</xp:tr>
 
 	</xp:table>
 
+
+	<xp:br/>
+	<xp:br/>
+	<xp:br/>
+	<h3>Options</h3>
 	<xp:table>
 		<xp:tr>
 			<xp:td></xp:td>
-			<xp:td></xp:td>
 			<xp:td>Default</xp:td>
+			<xp:td>Specified</xp:td>
+
 		</xp:tr>
 		<xp:tr>
 			<xp:td>
 				<xp:label value="Cleanup Type" id="label3"></xp:label>
 			</xp:td>
+			<xp:td>No Cleanup</xp:td>
 			<xp:td>
-				<xp:comboBox id="comboBox1"
-					value="#{viewScope.cleanup}">
-					<xp:selectItem itemLabel="Semantic"
-						itemValue="semantic" id="selectItem1">
+				<xp:comboBox id="comboBox1" value="#{viewScope.cleanup}">
+					<xp:selectItem itemLabel="Semantic" itemValue="semantic"
+						id="selectItem1">
 					</xp:selectItem>
-					<xp:selectItem itemLabel="Efficiency"
-						itemValue="efficiency" id="selectItem2">
+					<xp:selectItem itemLabel="Efficiency" itemValue="efficiency"
+						id="selectItem2">
 					</xp:selectItem>
-					<xp:selectItem itemLabel="No Cleanup"
-						itemValue="nocleanup" id="selectItem3">
+					<xp:selectItem itemLabel="No Cleanup" itemValue="nocleanup"
+						id="selectItem3">
 					</xp:selectItem>
 				</xp:comboBox>
 			</xp:td>
-			<xp:td>No Cleanup</xp:td>
 		</xp:tr>
 		<xp:tr>
 			<xp:td>
 				<xp:label value="Edit Cost" id="label4"></xp:label>
 			</xp:td>
+			<xp:td>4</xp:td>
 			<xp:td>
-				<xe:djNumberTextBox id="djNumberTextBox1"
-					value="#{viewScope.editCost}" javaType="short">
+				<xe:djNumberTextBox id="djNumberTextBox1" value="#{viewScope.editCost}"
+					javaType="short">
 				</xe:djNumberTextBox>
 			</xp:td>
-			<xp:td>4</xp:td>
 		</xp:tr>
 		<xp:tr>
+
 			<xp:td>
 				<xp:label value="Timeout" id="label5"></xp:label>
-			(seconds)</xp:td>
-			<xp:td>
-				<xe:djNumberTextBox id="djNumberTextBox2"
-					value="#{viewScope.timeout}" javaType="float">
-				</xe:djNumberTextBox>
+				(seconds)
 			</xp:td>
 			<xp:td>1</xp:td>
+
+			<xp:td>
+				<xe:djNumberTextBox id="djNumberTextBox2" value="#{viewScope.timeout}"
+					javaType="float">
+				</xe:djNumberTextBox>
+			</xp:td>
 		</xp:tr>
 	</xp:table>
 	<xp:button value="Submit" id="button1">
