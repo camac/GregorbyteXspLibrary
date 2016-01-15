@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.ibm.designer.domino.xsp.editor.component">
+      <components
+            id="%gregorbyte.library.id"
+            name="%gregorbyte.library.name"
+            neverShowInPalette="false"
+            panelsFactory="com.gregorbyte.xsp.designer.tooling.panels.core.GregorbytePanelsFactory"
+            schemaUri="http://www.gregorbyte.com/xsp/">
+         <component
+               neverShowInPalette="false"
+               tagName="phoneNumber">
+            <paletteItem
+                  action="com.gregorbyte.xsp.designer.tooling.palette.PhoneNumberDropAction"
+                  description="%palette.entry.control.phoneNumber.description"
+                  iconLarge="images/palette/gregorbyteicon24x24.png"
+                  iconSmall="images/palette/gregorbyteicon16x16.png"
+                  label="%palette.entry.control.phoneNumber.label"
+                  visible="true">
+            </paletteItem>
+         </component>
+         <paletteInfo>
+            <category
+                  description="%gregorbyte.library.id"
+                  iconLarge="images/palette/gregorbyteicon24x24.png"
+                  iconSmall="images/palette/gregorbyteicon16x16.png"
+                  id="%gregorbyte.library.id"
+                  label="%gregorbyte.library.id"
+                  visible="true">
+            </category>
+         </paletteInfo>
+      </components>
+   </extension>
+
+</plugin>

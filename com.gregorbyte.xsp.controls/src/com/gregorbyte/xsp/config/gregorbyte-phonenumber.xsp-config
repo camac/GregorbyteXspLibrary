@@ -126,25 +126,25 @@
 
 			<tag-name>phoneNumber</tag-name>
 
-			<designer-extension>
+<!-- 			<designer-extension> -->
 
-				<category>Gregorbyte</category>
-				<render-markup>
-					&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<!-- 				<category>Gregorbyte Library</category> -->
+<!-- 				<render-markup> -->
+<!-- 					&lt;?xml version="1.0" encoding="UTF-8"?&gt; -->
 
-					&lt;xp:view xmlns:xp="http://www.ibm.com/xsp/core"&gt;
+<!-- 					&lt;xp:view xmlns:xp="http://www.ibm.com/xsp/core"&gt; -->
 
-					&lt;xp:panel
-					style="width:60px"&gt;
+<!-- 					&lt;xp:panel -->
+<!-- 					style="width:60px"&gt; -->
 
-					&lt;xp:image url="img.jpg"
-					id="image1"&gt;&lt;/xp:image&gt;
+<!-- 					&lt;xp:image url="img.jpg" -->
+<!-- 					id="image1"&gt;&lt;/xp:image&gt; -->
 
-					&lt;xp:label value="Control"
-					id="label1"&gt;
+<!-- 					&lt;xp:label value="Control" -->
+<!-- 					id="label1"&gt; -->
 
-					&lt;/xp:label&gt;&lt;/xp:panel&gt;&lt;/xp:view&gt; </render-markup>
-			</designer-extension>
+<!-- 					&lt;/xp:label&gt;&lt;/xp:panel&gt;&lt;/xp:view&gt; </render-markup> -->
+<!-- 			</designer-extension> -->
 		</component-extension>
 	</component>
 
