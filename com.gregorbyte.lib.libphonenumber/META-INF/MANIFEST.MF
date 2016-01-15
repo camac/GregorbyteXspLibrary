@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gregorbyte Lib Libphonenumber
+Bundle-SymbolicName: com.gregorbyte.lib.libphonenumber;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.gregorbyte.xsp.lib.libphonenumber.plugin.Activator
+Bundle-Vendor: GREGORBYTE
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: com.google.i18n.phonenumbers,
+ com.google.i18n.phonenumbers.internal,
+ com.gregorbyte.xsp.lib.libphonenumber.plugin
+Bundle-ClassPath: lib/libphonenumber-7.0.2.jar,
+ .
