@@ -9,7 +9,8 @@ Require-Bundle: org.eclipse.core.runtime,
  com.ibm.xsp.extsn,
  com.ibm.commons,
  com.gregorbyte.xsp.controls;visibility:=reexport,
- com.gregorbyte.xsp.core;visibility:=reexport
+ com.gregorbyte.xsp.core;visibility:=reexport,
+ com.gregorbyte.xsp.flagicons;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Export-Package: com.gregorbyte.xsp.library,
  com.gregorbyte.xsp.plugin
