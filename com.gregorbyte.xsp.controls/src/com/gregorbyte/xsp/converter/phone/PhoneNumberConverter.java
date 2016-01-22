@@ -3,6 +3,7 @@ package com.gregorbyte.xsp.converter.phone;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -14,10 +15,17 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.gregorbyte.xsp.component.phone.UIPhoneNumber;
+import com.gregorbyte.xsp.log.GregorbyteLogger;
+import com.ibm.commons.log.LogMgr;
 import com.ibm.commons.util.StringUtil;
+import com.ibm.xsp.application.ApplicationEx;
 import com.ibm.xsp.converter.AbstractConverter;
 
 public class PhoneNumberConverter extends AbstractConverter {
+
+	private static final LogMgr logger = GregorbyteLogger.CONTROLS;
+
+	private static final String APPPROP_DEFCOUNTRYCODE = "gregorbyte.phonenumber.defaultCountryCode";
 
 	private String defaultCountryCode = null;
 
@@ -32,10 +40,40 @@ public class PhoneNumberConverter extends AbstractConverter {
 		String defCountryCode = null;
 
 		if (component instanceof UIPhoneNumber) {
-			System.out.println("Using UIPhoneNumber defCountryCode");
 			defCountryCode = ((UIPhoneNumber) component).getDefCountryCode();
 		} else {
 			defCountryCode = getDefaultCountryCode();
+		}
+
+		if (StringUtil.isEmpty(defCountryCode)) {
+
+			defCountryCode = ApplicationEx.getInstance(context)
+					.getApplicationProperty(APPPROP_DEFCOUNTRYCODE, null);
+
+			if (StringUtil.isNotEmpty(defCountryCode)) {
+
+				if (logger.isTraceDebugEnabled()) {
+					logger.traceDebug(
+							"Using '{0}' Application Property '{1}' for Country Code ",
+							APPPROP_DEFCOUNTRYCODE,
+							defCountryCode);
+				}
+
+			}
+
+		}
+
+		if (StringUtil.isEmpty(defCountryCode)) {
+
+			defCountryCode = context.getExternalContext().getRequestLocale()
+					.getCountry();
+
+			if (logger.isTraceDebugEnabled()) {
+				logger.traceDebug(
+						"Using Request Locale '{0}' for Country Code ",
+						defCountryCode);
+			}
+
 		}
 
 		try {
@@ -47,9 +85,8 @@ public class PhoneNumberConverter extends AbstractConverter {
 				FacesMessage fm = new FacesMessage();
 				fm.setSummary("Phone Number is not valid for country code "
 						+ defCountryCode);
-				fm
-						.setDetail("The supplied Phone Number is not valid to the country code "
-								+ defCountryCode);
+				fm.setDetail("The supplied Phone Number is not valid to the country code "
+						+ defCountryCode);
 				fm.setSeverity(FacesMessage.SEVERITY_ERROR);
 
 				throw new ConverterException(fm);
@@ -79,9 +116,8 @@ public class PhoneNumberConverter extends AbstractConverter {
 		} catch (NumberParseException e) {
 
 			FacesMessage fm = new FacesMessage();
-			fm
-					.setSummary("The Phone Number entered is not in a valid format for "
-							+ defCountryCode);
+			fm.setSummary("The Phone Number entered is not in a valid format for "
+					+ defCountryCode);
 			fm.setDetail(e.getMessage());
 			fm.setSeverity(FacesMessage.SEVERITY_ERROR);
 

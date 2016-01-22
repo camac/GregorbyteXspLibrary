@@ -7,31 +7,31 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import com.gregorbyte.xsp.component.phone.UIPhoneNumber;
+import com.gregorbyte.xsp.flagicons.util.FlagIconUtil;
 import com.ibm.xsp.renderkit.html_basic.InputTextRenderer;
 
 public class PhoneNumberRenderer extends InputTextRenderer {
 
 	@Override
-	protected void writeTag(FacesContext arg0, UIInput arg1,
+	protected void writeTag(FacesContext context, UIInput component,
 			ResponseWriter rw, String arg3) throws IOException {
 
-		if (arg1 instanceof UIPhoneNumber) {
+		if (component instanceof UIPhoneNumber) {
 		
-			UIPhoneNumber pn = (UIPhoneNumber)arg1;
+			UIPhoneNumber pn = (UIPhoneNumber)component;
 			
 			if (pn.isValid() && pn.getRegionCode() != null) {
 				
 				String regionCode = pn.getRegionCode();
 
-				rw.startElement("img", null);
-				rw.writeAttribute("src", regionCode + ".png", "flagCode");
-				// rw.writeURIAttribute(arg0, arg1, arg2)
-				rw.endElement("img");
+				FlagIconUtil.writeFlagIcon(rw, regionCode);
 
 			}
 		}
 
-		super.writeTag(arg0, arg1, rw, arg3);
+		super.writeTag(context, component, rw, arg3);
 	}
 
+	
+	
 }
