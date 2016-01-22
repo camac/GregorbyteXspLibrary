@@ -39,3 +39,8 @@ Require-Bundle: org.eclipse.ui,
  com.ibm.designer.domino.application.dialogs,
  com.ibm.notes.client,
  com.ibm.designer.domino.product 
+Export-Package: com.gregorbyte.xsp.designer.tooling.constants,
+ com.gregorbyte.xsp.designer.tooling.palette,
+ com.gregorbyte.xsp.designer.tooling.panels.core,
+ com.gregorbyte.xsp.designer.tooling.panels.textdiff,
+ com.gregorbyte.xsp.designer.tooling.plugin

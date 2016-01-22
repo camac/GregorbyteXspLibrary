@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+
+	<faces-config-extension>
+		<namespace-uri>http://www.gregorbyte.com/xsp/</namespace-uri>
+		<default-prefix>gb</default-prefix>
+	</faces-config-extension>
+
+	<component>
+		<description>Renders Markdown on ReadOnly, but TextArea on Edit</description>
+		<display-name>Markdown</display-name>
+		<component-type>gregorbyte.Markdown</component-type>
+		<component-class>com.gregorbyte.xsp.component.markdown.UIMarkdown</component-class>
+		<component-extension>
+			<base-component-type>com.ibm.xsp.InputTextarea</base-component-type>
+			<renderer-type>Text.Markdown</renderer-type>
+			<tag-name>markdown</tag-name>
+		</component-extension>
+
+	</component>
+
+</faces-config>

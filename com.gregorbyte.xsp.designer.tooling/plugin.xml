@@ -31,6 +31,17 @@
                   visible="true">
             </category>
          </paletteInfo>
+         <component
+               neverShowInPalette="false"
+               tagName="markdown">
+            <paletteItem
+                  description="%palette.entry.control.markdown.description"
+                  iconLarge="images/palette/markdown/markdown-24.png"
+                  iconSmall="images/palette/markdown/markdown-16.png"
+                  label="%palette.entry.control.markdown.label"
+                  visible="true">
+            </paletteItem>
+         </component>
       </components>
    </extension>
 

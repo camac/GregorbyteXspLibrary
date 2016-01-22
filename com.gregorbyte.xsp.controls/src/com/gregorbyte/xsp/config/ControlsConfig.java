@@ -9,6 +9,7 @@ public class ControlsConfig extends GregorbytePluginConfig {
 				"com/gregorbyte/xsp/config/gregorbyte-mimeinspector.xsp-config", // $NON-NLS-1$
 				"com/gregorbyte/xsp/config/gregorbyte-panelgrid.xsp-config", // $NON-NLS-1$
 				"com/gregorbyte/xsp/config/gregorbyte-phonenumber.xsp-config", // $NON-NLS-1$
+				"com/gregorbyte/xsp/config/gregorbyte-markdown.xsp-config", // $NON-NLS-1$
 		});
 	}
 
@@ -20,6 +21,7 @@ public class ControlsConfig extends GregorbytePluginConfig {
 						"com/gregorbyte/xsp/config/gregorbyte-textdiff-faces-config.xml", // $NON-NLS-1$
 						"com/gregorbyte/xsp/config/gregorbyte-panelgrid-faces-config.xml", // $NON-NLS-1$
 						"com/gregorbyte/xsp/config/gregorbyte-phonenumber-faces-config.xml", // $NON-NLS-1$
+						"com/gregorbyte/xsp/config/gregorbyte-markdown-faces-config.xml", // $NON-NLS-1$
 				});
 
 	}

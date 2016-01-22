@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/">
+
+	<h1>Markdown</h1>
+
+
+	<h3>Read from the File Resources</h3>
+	<gb:markdown id="markdown1" readonly="true" value="/TestMarkdown.md"></gb:markdown>
+</xp:view>
