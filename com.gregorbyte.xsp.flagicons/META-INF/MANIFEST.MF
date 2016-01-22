@@ -11,4 +11,5 @@ Require-Bundle: com.gregorbyte.xsp.core,
  com.ibm.commons,
  org.eclipse.core.runtime,
  com.ibm.xsp.core
-Export-Package: com.gregorbyte.xsp.flagicons.minifier
+Export-Package: com.gregorbyte.xsp.flagicons.minifier,
+ com.gregorbyte.xsp.flagicons.util
