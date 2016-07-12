@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex" beforePageLoad="#{exampleSqlRepo.sync}">
+	This Page is an Example of SQL Sync
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+
+	<xp:button value="Synchronise Repo" id="button1">
+		<xp:eventHandler event="onclick" submit="true" refreshMode="complete" action="#{exampleSqlRepo.sync}"></xp:eventHandler>
+	</xp:button>
+	<xp:button value="TRUNCATE PUBLIC SCHEMA" id="button3">
+		<xp:eventHandler event="onclick" submit="true" refreshMode="complete" action="#{exampleSqlRepo.dropPublicSchema}"></xp:eventHandler>
+	</xp:button>
+	<xp:button value="DROP PUBLIC SCHEMA" id="button2">
+		<xp:eventHandler event="onclick" submit="true" refreshMode="complete" action="#{exampleSqlRepo.dropPublicSchema}"></xp:eventHandler>
+	</xp:button>
+
+	<p>The following view panel shows data from the Sql Repository</p>
+	<p>These changes should be kept in sync when changes are made to the notes data</p>
+
+	<xp:viewPanel rows="30" id="viewPanel1">
+
+		<xp:this.data>
+			<xe:jdbcQuery var="rowData" connectionName="examplehsql">
+				<xe:this.sqlTable><![CDATA[#{javascript:return '"examples"';}]]></xe:this.sqlTable>
+			</xe:jdbcQuery>
+		</xp:this.data>
+
+
+		<xp:this.facets>
+			<xp:pager partialRefresh="true" layout="Previous Group Next" xp:key="headerPager" id="pager1"></xp:pager>
+		</xp:this.facets>
+
+		<xp:viewColumn id="viewColumn1" columnName="name">
+			<xp:this.facets>
+				<xp:viewColumnHeader xp:key="header" id="viewColumnHeader1"></xp:viewColumnHeader>
+			</xp:this.facets>
+		</xp:viewColumn>
+		<xp:viewColumn id="viewColumn2" columnName="description">
+			<xp:this.facets>
+				<xp:viewColumnHeader xp:key="header" id="viewColumnHeader2"></xp:viewColumnHeader>
+			</xp:this.facets>
+		</xp:viewColumn>
+
+	</xp:viewPanel>
+
+	
+
+</xp:view>

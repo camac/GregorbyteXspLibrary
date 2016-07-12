@@ -1,0 +1,6 @@
+<jdbc>
+	<driver>org.hsqldb.jdbc.JDBCDriver</driver>
+	<url>jdbc:hsqldb:mem:example</url>
+	<user>SA</user>
+	<password></password>
+</jdbc>

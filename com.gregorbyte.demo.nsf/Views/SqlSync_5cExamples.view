@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.lotus.com/dxl" name="SqlSync\Examples" alias="SqlSyncExamples" showinmenu="false" publicaccess="false" unreadmarks="none" onopengoto="lastopened" onrefresh="displayindicator" headers="beveled" opencollapsed="false" showresponsehierarchy="true" showmargin="true" shrinkrows="false" extendlastcolumn="false" showhierarchies="false" unreadcolor="black" rowlinecount="1" headerlinecount="1" rowspacing="1" bgcolor="white" totalscolor="black" headerbgcolor="white" boldunreadrows="false" evaluateactions="false" allownewdocuments="false" allowcustomizations="true" hidemarginborder="false" marginwidth="0px" marginbgcolor="white" uniquekeys="false">
+  <code event="selection">
+    <formula>SELECT ((Form = "Example"))</formula>
+  </code>
+  <actionbar bgcolor="#f0f0f0" bordercolor="black">
+    <actionbuttonstyle bgcolor="#f0f0f0"/>
+    <font size="9pt" color="system"/>
+    <border style="solid" width="0px 0px 1px"/>
+    <action title="(Untitled)" displaytype="menuseparator"/>
+  </actionbar>
+  <column sort="descending" hidedetailrows="false" itemname="$1" width="15.7500" resizable="true" separatemultiplevalues="false" sortnoaccent="false" sortnocase="true" showaslinks="false">
+    <font size="8pt" name="Arial" pitch="variable" truetype="true" familyid="20"/>
+    <columnheader title="Last Modified">
+      <font size="8pt" name="Arial" pitch="variable" truetype="true" familyid="20"/>
+    </columnheader>
+    <datetimeformat show="datetime" date="yearmonthday" fourdigityearfor21stcentury="true" time="hourminutesecond" zone="never" dateformat="weekdaydaymonthyear" dayformat="twodigitday" monthformat="twodigitmonth" yearformat="fourdigityear" weekdayformat="shortname" dateseparator1=" " dateseparator2="/" dateseparator3="/" timeseparator=":" preference="usersetting"/>
+    <code event="value">
+      <formula>@Modified</formula>
+    </code>
+  </column>
+  <column hidedetailrows="false" itemname="id" width="13.2500" resizable="true" separatemultiplevalues="false" sortnoaccent="true" sortnocase="true" showaslinks="false">
+    <font size="8pt" name="Arial" pitch="variable" truetype="true" familyid="20"/>
+    <columnheader title="id">
+      <font size="8pt" name="Arial" pitch="variable" truetype="true" familyid="20"/>
+    </columnheader>
+  </column>
+  <column hidedetailrows="false" itemname="name" width="14.3750" resizable="true" separatemultiplevalues="false" sortnoaccent="false" sortnocase="true" showaslinks="false">
+    <font size="8pt" name="Arial" pitch="variable" truetype="true" familyid="20"/>
+    <columnheader title="name">
+      <font size="8pt" name="Arial" pitch="variable" truetype="true" familyid="20"/>
+    </columnheader>
+  </column>
+  <column hidedetailrows="false" itemname="description" width="26.1250" resizable="true" separatemultiplevalues="false" sortnoaccent="false" sortnocase="true" showaslinks="false">
+    <font size="8pt" name="Arial" pitch="variable" truetype="true" familyid="20"/>
+    <columnheader title="description">
+      <font size="8pt" name="Arial" pitch="variable" truetype="true" familyid="20"/>
+    </columnheader>
+  </column>
+  <item name="$SelQuery" sign="true">
+    <rawitemdata type="f">
+gQYAAAAAif8TAAAAAAABAAcARXhhbXBsZQA=
+</rawitemdata>
+  </item>
+</view>
