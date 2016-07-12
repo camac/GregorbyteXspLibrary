@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gregorbyte Sqlsync Library
+Bundle-SymbolicName: com.gregorbyte.xsp.sqlsync;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: GREGORBYTE
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.osgi,
+ org.eclipse.core.runtime,
+ com.ibm.commons,
+ com.ibm.xsp.extlib.relational,
+ com.ibm.designer.lib.jsf,
+ com.ibm.xsp.extsn,
+ com.ibm.xsp.domino
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: com.gregorbyte.xsp.plugin.GregorbyteSqlSyncActivator
+Export-Package: com.gregorbyte.xsp.plugin,
+ com.gregorbyte.xsp.sqlsync
