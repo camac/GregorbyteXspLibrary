@@ -3,9 +3,6 @@ package com.gregorbyte.xsp.component;
 import javax.faces.context.FacesContext;
 import javax.faces.el.ValueBinding;
 
-import name.fraser.neil.plaintext.DiffMatchPatch.Diff;
-import name.fraser.neil.plaintext.DiffMatchPatch.Operation;
-
 import com.ibm.xsp.component.UIOutputEx;
 
 public class UITextDiff extends UIOutputEx {
@@ -18,11 +15,9 @@ public class UITextDiff extends UIOutputEx {
 	// Styles when Rendering
 	private String insertStyle = null;
 	private String insertStyleClass = null;
-	private static final String DEFAULT_INSERTSTYLE = "color: green;";
 
 	private String deleteStyle = null;
 	private String deleteStyleClass = null;
-	private static final String DEFAULT_DELETESTYLE = "color: red; text-decoration: line-through";
 
 	private String equalStyle = null;
 	private String equalStyleClass = null;
@@ -86,58 +81,6 @@ public class UITextDiff extends UIOutputEx {
 		this.to = to;
 	}
 
-	public String getStyle(Diff diff) {
-
-		if (diff == null)
-			return null;
-
-		return getStyle(diff.operation);
-
-	}
-
-	public String getStyle(Operation operation) {
-
-		if (operation == null)
-			return null;
-
-		if (operation.equals(Operation.INSERT)) {
-			return getInsertStyle();
-		} else if (operation.equals(Operation.DELETE)) {
-			return getDeleteStyle();
-		} else if (operation.equals(Operation.EQUAL)) {
-			return getEqualStyle();
-		}
-
-		return null;
-
-	}
-
-	public String getStyleClass(Diff diff) {
-
-		if (diff == null)
-			return null;
-
-		return getStyleClass(diff.operation);
-
-	}
-
-	public String getStyleClass(Operation operation) {
-
-		if (operation == null)
-			return null;
-
-		if (operation.equals(Operation.INSERT)) {
-			return getInsertStyleClass();
-		} else if (operation.equals(Operation.DELETE)) {
-			return getDeleteStyleClass();
-		} else if (operation.equals(Operation.EQUAL)) {
-			return getEqualStyleClass();
-		}
-
-		return null;
-
-	}
-
 	// Styles Below
 
 	public String getInsertStyle() {
@@ -152,7 +95,7 @@ public class UITextDiff extends UIOutputEx {
 			return (String) vb.getValue(getFacesContext());
 		}
 
-		return DEFAULT_INSERTSTYLE;
+		return null;
 
 	}
 
@@ -192,7 +135,7 @@ public class UITextDiff extends UIOutputEx {
 			return (String) vb.getValue(getFacesContext());
 		}
 
-		return DEFAULT_DELETESTYLE;
+		return null;
 
 	}
 
