@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/" style="padding: 20px;">
+
 	<xp:this.data>
 		<xp:dominoDocument formName="MimeInspectorExample"
 			var="example">
@@ -11,9 +12,12 @@
 	<p>This Code Outputs the Current Mime Structure of a Mime Field</p>
 
 	<hr></hr>
-
-	<gb:mimeInspector id="mimeInspector1" value="#{example.body}"></gb:mimeInspector>
-
+	<xp:checkBox text="Show Headers" id="checkBox1" value="#{viewScope.showHeaders}" checkedValue="true" uncheckedValue="false"></xp:checkBox>
+	<xp:checkBox text="Show Content" id="checkBox2" value="#{viewScope.showContent}" checkedValue="true" uncheckedValue="false"></xp:checkBox>
+	<hr></hr>
+	<xp:panel style="border: 1px solid blue; padding: 5px;">
+		<gb:mimeInspector id="mimeInspector1" value="#{example.body}" showHeaders="#{viewScope.showHeaders eq 'true'}" showContent="#{viewScope.showContent eq 'true'}"></gb:mimeInspector>
+	</xp:panel>
 	<hr></hr>
 
 	<xp:label value="Subject" id="label1"></xp:label>
@@ -23,7 +27,7 @@
 
 	<xp:inputRichText id="inputRichText1" value="#{example.body}"></xp:inputRichText>
 
-	<xp:button value="Submit" id="buttonSubmit">
+	<xp:button value="Submit / Refresh" id="buttonSubmit">
 		<xp:eventHandler event="onclick" submit="true"
 			refreshMode="complete">
 		</xp:eventHandler>
@@ -43,7 +47,7 @@
 			</xp:this.action>
 		</xp:eventHandler>
 	</xp:button>
-	<xp:button value="Update / Add Embedded xml" id="button2">
+	<xp:button value="Update / Add Embedded xml" id="button2" rendered="false">
 		<xp:eventHandler event="onclick" submit="true"
 			refreshMode="complete">
 			<xp:this.action><![CDATA[#{javascript:com.gregorbyte.xsp.component.EmbeddedExperienceBean.updateUrl(example.getDocument());}]]></xp:this.action>

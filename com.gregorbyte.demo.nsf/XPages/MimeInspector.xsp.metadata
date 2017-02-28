@@ -1,12 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<note xmlns="http://www.lotus.com/dxl" class="form">
-  <item name="$Flags">
-    <text>gC~4K</text>
-  </item>
-  <item name="$TITLE">
-    <text>MimeInspector.xsp</text>
-  </item>
-  <item name="$FileNames" sign="true">
-    <text>MimeInspector.xsp</text>
-  </item>
-</note>
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.2" replicaid="CA257E7700389691" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="19e" sequence="69" unid="C5A1986AEFC9D685CA257E790041ACC9">
+<created><datetime>20150705T215720,73+10</datetime></created>
+<modified><datetime dst="true">20170214T195137,15+11</datetime></modified>
+<revised><datetime dst="true">20170214T195137,14+11</datetime></revised>
+<lastaccessed><datetime dst="true">20170214T195137,15+11</datetime></lastaccessed>
+<addedtofile><datetime>20150705T215720,74+10</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Cameron Gregor/O=JORD Engineers</name></updatedby>
+<wassignedby><name>CN=Cameron Gregor/O=JORD Engineers</name></wassignedby>
+<item name="$Flags"><text>gC~4K</text></item>
+<item name="$TITLE"><text>MimeInspector.xsp</text></item>
+
+
+
+<item name="$DesignerVersion"><text>8.5</text></item>
+
+
+
+
+<item name="$FileNames" sign="true"><text>MimeInspector.xsp</text></item></note>
