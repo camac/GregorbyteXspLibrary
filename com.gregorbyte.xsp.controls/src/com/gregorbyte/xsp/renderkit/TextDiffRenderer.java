@@ -14,9 +14,11 @@ import name.fraser.neil.plaintext.DiffMatchPatch.Operation;
 
 import com.gregorbyte.xsp.component.UITextDiff;
 import com.ibm.commons.util.StringUtil;
+import com.ibm.xsp.renderkit.html_extended.HtmlBasicRenderer;
+import com.ibm.xsp.renderkit.html_extended.RenderUtil;
 import com.ibm.xsp.util.HtmlUtil;
 
-public class TextDiffRenderer extends Renderer {
+public class TextDiffRenderer extends HtmlBasicRenderer {
 
 	private static final String DEFAULT_INSERTSTYLE = "color: green;";
 	private static final String DEFAULT_DELETESTYLE = "color: red; text-decoration: line-through";
@@ -66,9 +68,15 @@ public class TextDiffRenderer extends Renderer {
 			dmp.diff_cleanupEfficiency(diffs);
 		}
 
+		rw.startElement("span", diffComp);
+
+		encodeHtmlStyleAttributes(rw, diffComp);	
+		
 		for (Diff diff : diffs) {
 			renderDiff(rw, diffComp, diff);
 		}
+		
+		rw.endElement("span");
 
 	}
 

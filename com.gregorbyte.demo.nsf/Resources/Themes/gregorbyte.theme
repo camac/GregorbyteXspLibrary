@@ -55,5 +55,27 @@
 
 
 	</control>
+	
+	<control>
+		<name>Text.Diff.Funky</name>
+		<property>
+			<name>style</name>
+			<value>background-color: black;</value>
+		</property>
+		
+		<property>
+			<name>insertStyle</name>
+			<value>color: aqua;</value>
+		</property>
+		<property>
+			<name>equalStyle</name>
+			<value>color: lime;</value>
+		</property>
+		<property>
+			<name>deleteStyle</name>
+			<value>color: pink;</value>
+		</property>
+	
+	</control>
 
 </theme>
