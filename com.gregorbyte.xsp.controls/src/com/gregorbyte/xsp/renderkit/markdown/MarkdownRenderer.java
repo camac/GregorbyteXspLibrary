@@ -4,17 +4,26 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.List;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
+import org.eclipse.core.runtime.Platform;
 import org.markdown4j.Markdown4jProcessor;
+import org.osgi.framework.Bundle;
 
 import com.gregorbyte.xsp.log.GregorbyteLogger;
 import com.ibm.commons.log.LogMgr;
+import com.ibm.commons.util.StringUtil;
+import com.ibm.xsp.component.UIPassThroughText;
 import com.ibm.xsp.component.xp.XspInputTextarea;
 import com.ibm.xsp.renderkit.html_basic.TextAreaRenderer;
+import com.ibm.xsp.util.FacesUtil;
+import com.ibm.xsp.util.TypedUtil;
 
 public class MarkdownRenderer extends TextAreaRenderer {
 
@@ -23,24 +32,23 @@ public class MarkdownRenderer extends TextAreaRenderer {
 	public MarkdownRenderer() {
 
 		/**
-		 * Big Thanks to Martin Rolph of Oval UK for this code
-		 * Completely lifted from OvalUK/XPageDemos github
+		 * Big Thanks to Martin Rolph of Oval UK for this code Completely lifted
+		 * from OvalUK/XPageDemos github
 		 */
-		
+
 	}
 
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component)
-			throws IOException {
+	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
 
 		logger.info("In Encode End");
-		
+
 		if (component instanceof XspInputTextarea) {
 
 			XspInputTextarea md = (XspInputTextarea) component;
 
 			if (isReadOnly(context, md)) {
-				
+
 				encodeMarkdown(context, md);
 				return;
 			}
@@ -51,11 +59,10 @@ public class MarkdownRenderer extends TextAreaRenderer {
 
 	}
 
-	private void encodeMarkdown(FacesContext context, XspInputTextarea md)
-			throws IOException {
+	private void encodeMarkdown(FacesContext context, XspInputTextarea md) throws IOException {
 
 		logger.info("In Encode Markdown");
-		
+
 		ResponseWriter w = context.getResponseWriter();
 
 		w.startElement("span", md);
@@ -64,22 +71,69 @@ public class MarkdownRenderer extends TextAreaRenderer {
 		Object o = md.getValue();
 		String str = md.getValueAsString();
 
-		if (str != null) {
+		if (StringUtil.isNotEmpty(str)) {
 
-			if (str.startsWith("/")) {
+			if (str.startsWith("/") && StringUtil.endsWithIgnoreCase(str, ".md")) {
 
-				//InputStream is = context.getExternalContext().getResourceAsStream("TestMarkdown.md");
-				InputStream is = context.getExternalContext().getResourceAsStream("/WEB-INF/markdown/Sample.md");
-				
-				String markdown = processInputStream(is);
-				w.write(markdown);
-				
+				InputStream is = null;
+
+				if (StringUtil.startsWithIgnoreCase(str, "/WEB-INF")) {
+					is = context.getExternalContext().getResourceAsStream(str);
+				} else if (str.split("/").length > 2) {
+
+					String[] bits = str.split("/");
+
+					String bundleId = bits[1];
+
+					String path = str.replace("/" + bundleId, "");
+
+					if (StringUtil.isNotEmpty(bundleId) && StringUtil.isNotEmpty(path)) {
+
+						Bundle bundle = Platform.getBundle(bundleId);
+
+						URL u = getResourceURL(bundle, path);
+
+						try {
+
+							if (u != null) {
+								is = u.openStream();
+							}
+
+						} catch (Exception e) {
+
+						}
+
+					}
+
+				} else {
+					is = context.getExternalContext().getResourceAsStream(str);
+				}
+
+				if (is != null) {
+					String markdown = processInputStream(is);
+					w.write(markdown);
+					is.close();
+				}
+
 			} else {
 
 				String markdown = process(str);
 				w.write(markdown);
-				
+
 			}
+		} else {
+
+			List<UIComponent> kids = TypedUtil.getChildren(md);
+
+			for (UIComponent kid : kids) {
+
+				if (kid instanceof UIPassThroughText) {
+					String markdown = process(((UIPassThroughText) kid).getText());
+					w.write(markdown);
+				}
+
+			}
+
 		}
 
 		w.endElement("span");
@@ -103,8 +157,7 @@ public class MarkdownRenderer extends TextAreaRenderer {
 			// remove spans and fonts
 			String removeFonts = "<(FONT|font)([ ]([a-zA-Z]+)=(\\\"|\')[^\\\"\\\\\']+(\\\"|\'))*[^>]+>([^<]+)(<\\/FONT>|<\\/font>)";
 			String removeSpans = "<(SPAN|span)([ ]([a-zA-Z]+)=(\\\"|\')[^\\\"\\\\\']+(\\\"|\'))*[^>]+>([^<]+)(<\\/SPAN>|<\\/span>)";
-			input = input.replaceAll(removeFonts, "$6").replaceAll(removeSpans,
-					"$6");
+			input = input.replaceAll(removeFonts, "$6").replaceAll(removeSpans, "$6");
 
 			// look for image embedds
 			// String pattern =
@@ -127,7 +180,7 @@ public class MarkdownRenderer extends TextAreaRenderer {
 
 		return output;
 	}
-	
+
 	private static String getStringFromInputStream(InputStream is) {
 
 		BufferedReader br = null;
@@ -155,6 +208,29 @@ public class MarkdownRenderer extends TextAreaRenderer {
 
 		return sb.toString();
 
+	}
+
+	@Override
+	public boolean getRendersChildren() {
+		return true;
+	}
+
+	public static URL getResourceURL(Bundle bundle, String path) {
+
+		int fileNameIndex = path.lastIndexOf('/');
+		String fileName = path.substring(fileNameIndex + 1);
+		path = path.substring(0, fileNameIndex + 1);
+
+		// see http://www.osgi.org/javadoc/r4v42/org/osgi/framework/Bundle.html
+		// #findEntries%28java.lang.String,%20java.lang.String,%20boolean%29
+		Enumeration<?> urls = bundle.findEntries(path, fileName, false/* recursive */);
+		if (null != urls && urls.hasMoreElements()) {
+			URL url = (URL) urls.nextElement();
+			if (null != url) {
+				return url;
+			}
+		}
+		return null; // no match, 404 not found.
 	}
 
 }

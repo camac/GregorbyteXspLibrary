@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/" style="margin-left:20.0px;margin-top:20.0px">
 
 	<h1>Markdown</h1>
 
+	<h2>Live Preview example</h2>
 
-	<h3>Read from the File Resources</h3>
-	<gb:markdown id="markdown1" readonly="true" value="/TestMarkdown.md"></gb:markdown>
+	<xp:table id="tablePreview" style="width:800px;margin-bottom:50.0px;margin-top:10.0px">
+		<xp:tr>
+			<xp:td style="width:50%" valign="top">
+				<gb:markdown id="markdown2" value="#{viewScope.sampleText}">
+					<xp:eventHandler event="onkeyup" submit="true" refreshMode="partial" refreshId="markdown3" execMode="partial" execId="tablePreview"
+						disableValidators="true">
+					</xp:eventHandler>
+				</gb:markdown>
+			</xp:td>
+			<xp:td valign="top">
+				<gb:markdown id="markdown3" value="#{viewScope.sampleText}" readonly="true"></gb:markdown>
+			</xp:td>
+		</xp:tr>
+	</xp:table>
+
+	<h2>Sources</h2>
+
+	<!-- Read from WEB-INF -->
+	<gb:markdown id="markdown4" readonly="true" value="/WEB-INF/markdown/Sample.md"></gb:markdown>
+
+	<!-- Read from the File Resources -->
+	<gb:markdown id="markdown1" readonly="true" value="/FileResource.md"></gb:markdown>
+
+	<h3>Read from A plugin</h3>
+	<gb:markdown id="markdown6" readonly="true" value="/com.gregorbyte.xsp/resources/sample/Markdown.md"></gb:markdown>
+
+	<h3>Directly Input between tags</h3>
+	<gb:markdown id="markdown5" readonly="true">
+This text is directly within the tags 
+=====================================
+
+It has some drawbacks though
+
+* The text must be lined up directly against the margin (No indents) 
+* If you hit 'Ctrl + Shift + F' to format your xsp markup, it will indent the text and ruin everything 
+* You cannot embed html tags in the text
+
+These bugs could be fixed but I just haven't got to it yet
+	</gb:markdown>
+
+
 </xp:view>

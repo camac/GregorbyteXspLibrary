@@ -1,14 +1,13 @@
-This is just a test
-===================
+This is Loaded from WEB-INF
+===========================
 
-I don't see why it should not do a newlin
 This is where you **might** put some markdown
 
-* Thes are some things
+* These are some things
 * another thing to do
 
 ```
 public void doSomething() {
-	//This is a sample code
+	//This is some sample code
 }
 ```
