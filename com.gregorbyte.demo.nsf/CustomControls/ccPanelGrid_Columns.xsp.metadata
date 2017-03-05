@@ -1,22 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.2" replicaid="CA257E7700389691" version="9.0" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="2e6" sequence="41" unid="62E08ECCD06FDCD5CA257F1000342F34">
-<created><datetime dst="true">20151203T202959,56+11</datetime></created>
-<modified><datetime dst="true">20151203T205140,28+11</datetime></modified>
-<revised><datetime dst="true">20151203T205140,27+11</datetime></revised>
-<lastaccessed><datetime dst="true">20151203T205140,28+11</datetime></lastaccessed>
-<addedtofile><datetime dst="true">20151203T202959,57+11</datetime></addedtofile></noteinfo>
-<updatedby><name>CN=Cameron Gregor/O=JORD Engineers</name></updatedby>
-<wassignedby><name>CN=Cameron Gregor/O=JORD Engineers</name></wassignedby>
-<item name="$Flags"><text>gC~4;</text></item>
-
-
-<item name="$TITLE" sign="true"><text>ccPanelGrid_Columns.xsp</text></item>
-
-
-
-<item name="$FileNames" sign="true"><text>ccPanelGrid_Columns.xsp</text></item>
-<item name="$DesignerVersion"><text>8.5.2</text></item>
-
-
-
+<?xml version="1.0" encoding="UTF-8"?>
+<note xmlns="http://www.lotus.com/dxl" class="form">
+  <item name="$Flags">
+    <text>gC~4;</text>
+  </item>
+  <item name="$TITLE" sign="true">
+    <text>ccPanelGrid_Columns.xsp</text>
+  </item>
+  <item name="$FileNames" sign="true">
+    <text>ccPanelGrid_Columns.xsp</text>
+  </item>
 </note>

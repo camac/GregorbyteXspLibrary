@@ -1,5 +1,6 @@
 package com.gregorbyte.xsp.component;
 
+import javax.faces.context.FacesContext;
 import javax.faces.el.ValueBinding;
 
 import com.ibm.xsp.component.xp.XspTable;
@@ -169,5 +170,42 @@ public class UIPanelGrid extends XspTable {
 	public void setFrame(String frame) {
 		this.frame = frame;
 	}
+
+	@Override
+	public void restoreState(FacesContext context, Object object) {
+
+		Object[] values = (Object[])object;
+		
+		super.restoreState(context, values[0]);
+		this.bgcolor = (String)values[1];
+		this.columnClasses = (String)values[2];
+		this.columns = (Integer)values[3];
+		this.footerClass = (String)values[4];
+		this.frame = (String)values[5];
+		this.headerClass = (String)values[6];
+		this.rowClasses = (String)values[7];
+		
+	}
+
+	@Override
+	public Object saveState(FacesContext context) {
+
+		Object[] values = new Object[8];
+		
+		values[0] = super.saveState(context);
+		values[1] = this.bgcolor;
+		values[2] = this.columnClasses;
+		values[3] = this.columns;
+		values[4] = this.footerClass;
+		values[5] = this.frame;
+		values[6] = this.headerClass;
+		values[7] = this.rowClasses;
+		
+		return values;
+		
+		
+	}
+	
+	
 	
 }
