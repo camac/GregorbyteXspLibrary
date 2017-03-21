@@ -42,6 +42,40 @@
                   visible="true">
             </paletteItem>
          </component>
+         <component
+               neverShowInPalette="false"
+               tagName="container">
+            <paletteItem
+                  description="%palette.entry.control.bootstrap.container.description"
+                  iconLarge="images/palette/bootstrap/bootstrap-24.png"
+                  iconSmall="images/palette/bootstrap/bootstrap-16.png"
+                  label="%palette.entry.control.bootstrap.container.label"
+                  visible="true">
+            </paletteItem>
+         </component>
+         <component
+               neverShowInPalette="false"
+               tagName="row">
+            <paletteItem
+                  description="%palette.entry.control.bootstrap.row.description"
+                  iconLarge="images/palette/bootstrap/bootstrap-24.png"
+                  iconSmall="images/palette/bootstrap/bootstrap-16.png"
+                  label="%palette.entry.control.bootstrap.row.label"
+                  visible="true">
+            </paletteItem>
+         </component>
+         <component
+               neverShowInPalette="false"
+               tagName="column">
+            <paletteItem
+                  description="%palette.entry.control.bootstrap.column.description"
+                  iconLarge="images/palette/bootstrap/bootstrap-24.png"
+                  iconSmall="images/palette/bootstrap/bootstrap-16.png"
+                  label="%palette.entry.control.bootstrap.column.label"
+                  visible="true">
+            </paletteItem>
+         </component>
+         
       </components>
    </extension>
 

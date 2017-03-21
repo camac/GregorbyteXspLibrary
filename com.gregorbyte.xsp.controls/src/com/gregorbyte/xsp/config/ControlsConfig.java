@@ -10,6 +10,7 @@ public class ControlsConfig extends GregorbytePluginConfig {
 				"com/gregorbyte/xsp/config/gregorbyte-panelgrid.xsp-config", // $NON-NLS-1$
 				"com/gregorbyte/xsp/config/gregorbyte-phonenumber.xsp-config", // $NON-NLS-1$
 				"com/gregorbyte/xsp/config/gregorbyte-markdown.xsp-config", // $NON-NLS-1$
+				"com/gregorbyte/xsp/config/gregorbyte-bootstrap.xsp-config", // $NON-NLS-1$
 		});
 	}
 
