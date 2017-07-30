@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Gregorbyte Xsp Core Plugin
 Bundle-SymbolicName: com.gregorbyte.xsp.core;singleton:=true
-Bundle-Version: 1.2.0.qualifier
+Bundle-Version: 1.2.1.qualifier
 Bundle-Activator: com.gregorbyte.xsp.plugin.GregorbyteCoreActivator
 Bundle-Vendor: GREGORBYTE
 Require-Bundle: org.eclipse.core.runtime,

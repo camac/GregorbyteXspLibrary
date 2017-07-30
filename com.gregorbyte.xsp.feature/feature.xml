@@ -2,7 +2,7 @@
 <feature
       id="com.gregorbyte.xsp.feature"
       label="Gregorbyte ExtLib Feature"
-      version="1.2.0.qualifier"
+      version="1.2.1.qualifier"
       provider-name="Gregorbyte">
 
    <description url="http://www.example.com/description">
@@ -21,27 +21,27 @@
          id="com.gregorbyte.xsp"
          download-size="0"
          install-size="0"
-         version="1.2.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="com.gregorbyte.xsp.controls"
          download-size="0"
          install-size="0"
-         version="1.2.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="com.gregorbyte.xsp.core"
          download-size="0"
          install-size="0"
-         version="1.2.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="com.gregorbyte.lib.markdown4j"
          download-size="0"
          install-size="0"
-         version="1.2.0.qualifier"/>
+         version="0.0.0"/>
 
 </feature>
