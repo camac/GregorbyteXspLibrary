@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+
+	<faces-config-extension>
+		<namespace-uri>http://www.gregorbyte.com/xsp/
+		</namespace-uri>
+		<default-prefix>gb</default-prefix>
+	</faces-config-extension>
+
+	<converter>
+		<description>Converts a String into an Phone Number in
+			International Format</description>
+		<display-name>Phone Number Converter</display-name>
+		<converter-id>gregorbyte.PhoneNumberConverter</converter-id>
+		<converter-class>com.gregorbyte.xsp.converter.phone.PhoneNumberConverter
+		</converter-class>
+
+		<property>
+			<description>The default Country code to be used if the user does
+				not specify one</description>
+			<display-name>Default Country Code</display-name>
+			<property-name>defaultCountryCode</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+			</property-extension>
+
+		</property>
+
+		<converter-extension>
+			<tag-name>convertPhoneNumber</tag-name>
+		</converter-extension>
+
+	</converter>
+
+	<validator>
+		<description>Validates that a Phone Number is from a certain
+			country</description>
+		<display-name>Phone Number Validator</display-name>
+		<validator-id>gregorbyte.PhoneNumberValidator
+		</validator-id>
+		<validator-class>com.gregorbyte.xsp.validator.phone.PhoneNumberValidator
+		</validator-class>
+		<group-type-ref>com.ibm.xsp.validator.group.Validator
+		</group-type-ref>
+
+		<property>
+			<description>The List of Countries that the phone number is
+				allowed to belong to</description>
+			<display-name>Valid Countries</display-name>
+			<property-name>countryCodes</property-name>
+			<property-class>java.util.List</property-class>
+			<property-extension>
+				<collection-property>true</collection-property>
+				<property-item-class>com.gregorbyte.xsp.component.phone.CountryCode
+				</property-item-class>
+				<property-add-method>addCountryCode
+				</property-add-method>
+				<allow-run-time-binding>false</allow-run-time-binding>
+				<allow-load-time-binding>false</allow-load-time-binding>
+			</property-extension>
+
+		</property>
+
+
+		<validator-extension>
+			<tag-name>phoneNumberValidator</tag-name>
+		</validator-extension>
+	</validator>
+
+	<complex-type>
+		<description>A Country on Earth</description>
+		<display-name>Country</display-name>
+		<complex-id>com.gregorbyte.xsp.component.phhone.Country
+		</complex-id>
+		<complex-class>com.gregorbyte.xsp.component.phone.CountryCode
+		</complex-class>
+		<property>
+			<description>The 2 letter ISO Country Code</description>
+			<display-name>Country Code</display-name>
+			<property-name>code</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<required>true</required>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<editor>
+						com.ibm.workspace.designer.property.editors.comboParameterEditor
+					</editor>
+					<editor-parameter>
+						AU
+						FR
+						SG
+						US          			
+          </editor-parameter>
+				</designer-extension>
+			</property-extension>
+		</property>
+		<complex-extension>
+			<tag-name>country</tag-name>
+		</complex-extension>
+	</complex-type>
+
+	<component>
+
+		<base-component-type>com.ibm.xsp.InputText
+		</base-component-type>
+
+		<description>Validates Displays Phone Number Information
+		</description>
+		<display-name>Phone Number Entry</display-name>
+		<component-type>com.gregorbyte.xsp.component.phone.UIPhoneNumber
+		</component-type>
+		<component-class>com.gregorbyte.xsp.component.phone.UIPhoneNumber
+		</component-class>
+
+		<component-extension>
+
+			<base-component-type>com.ibm.xsp.InputText
+			</base-component-type>
+
+			<component-family>java.faces.Input
+			</component-family>
+			<renderer-type>com.gregorbyte.PhoneNumber
+			</renderer-type>
+
+			<tag-name>phoneNumber</tag-name>
+
+<!-- 			<designer-extension> -->
+
+<!-- 				<category>Gregorbyte Library</category> -->
+<!-- 				<render-markup> -->
+<!-- 					&lt;?xml version="1.0" encoding="UTF-8"?&gt; -->
+
+<!-- 					&lt;xp:view xmlns:xp="http://www.ibm.com/xsp/core"&gt; -->
+
+<!-- 					&lt;xp:panel -->
+<!-- 					style="width:60px"&gt; -->
+
+<!-- 					&lt;xp:image url="img.jpg" -->
+<!-- 					id="image1"&gt;&lt;/xp:image&gt; -->
+
+<!-- 					&lt;xp:label value="Control" -->
+<!-- 					id="label1"&gt; -->
+
+<!-- 					&lt;/xp:label&gt;&lt;/xp:panel&gt;&lt;/xp:view&gt; </render-markup> -->
+<!-- 			</designer-extension> -->
+		</component-extension>
+	</component>
+
+</faces-config>

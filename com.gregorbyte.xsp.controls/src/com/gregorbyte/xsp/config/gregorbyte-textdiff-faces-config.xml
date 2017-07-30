@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+	<render-kit>
+		<renderer>
+			<component-family>javax.faces.Output</component-family>
+			<renderer-type>com.gregorbyte.TextDiff</renderer-type>
+			<renderer-class>com.gregorbyte.xsp.renderkit.TextDiffRenderer</renderer-class>
+		</renderer>
+	</render-kit>
+</faces-config>

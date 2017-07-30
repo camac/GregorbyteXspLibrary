@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/">
+
+	<gb:panelGrid id="panelGrid1">
+
+		<xp:label value="Label" id="label1"></xp:label>
+		<xp:inputText id="inputText1"></xp:inputText>
+
+		<xp:label value="Label" id="label2"></xp:label>
+
+		<!-- The Span and it's children take up one Grid Spot -->
+		<xp:span>
+			<xp:inputText id="inputText2"></xp:inputText>
+			<xp:text escape="true" id="computedField1" value="Some Message">
+			</xp:text>
+			<xp:link escape="true" text="I am a Link" id="link1"></xp:link>
+		</xp:span>
+
+		<xp:label value="Label" id="label3"></xp:label>
+		<xp:inputText id="inputText3"></xp:inputText>
+
+		<xp:label value="Label" id="label4"></xp:label>
+		<xp:inputText id="inputText4"></xp:inputText>
+
+
+	</gb:panelGrid>
+
+</xp:view>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:button value="New Example" id="button1">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+			<xp:this.action>
+				<xp:openPage name="/Mohan.xsp" target="newDocument"></xp:openPage>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+
+	<xp:viewPanel rows="30" id="viewPanel1" pageName="/Mohan.xsp">
+		<xp:this.facets>
+			<xp:pager partialRefresh="true" layout="Previous Group Next"
+				xp:key="headerPager" id="pager1">
+			</xp:pager>
+		</xp:this.facets>
+		<xp:this.data>
+			<xp:dominoView var="examples" viewName="MimeInspectorExamples">
+			</xp:dominoView>
+		</xp:this.data>
+		<xp:viewColumn columnName="$2" id="viewColumn1"
+			displayAs="link" openDocAsReadonly="true">
+			<xp:viewColumnHeader value="Last Modified" id="viewColumnHeader1">
+			</xp:viewColumnHeader>
+		</xp:viewColumn>
+		<xp:viewColumn columnName="subject" id="viewColumn2">
+			<xp:viewColumnHeader value="Subject" id="viewColumnHeader2">
+			</xp:viewColumnHeader>
+		</xp:viewColumn>
+	</xp:viewPanel>
+
+
+
+</xp:view>

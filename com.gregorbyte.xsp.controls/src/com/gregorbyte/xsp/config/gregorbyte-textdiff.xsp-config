@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+
+	<faces-config-extension>
+		<namespace-uri>http://www.gregorbyte.com/xsp/
+		</namespace-uri>
+		<default-prefix>gb</default-prefix>
+	</faces-config-extension>
+
+	<component>
+
+		<base-component-type>com.ibm.xsp.UIOutputEx
+		</base-component-type>
+
+		<description>Outputs the difference between 2 pieces of text
+		</description>
+		<display-name>Text Difference</display-name>
+		<component-type>com.gregorbyte.xsp.component.UITextDiff
+		</component-type>
+		<component-class>com.gregorbyte.xsp.component.UITextDiff
+		</component-class>
+
+		<property>
+			<description>The Original Text</description>
+			<display-name>From Text</display-name>
+			<property-name>from</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<required>true</required>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>diff</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<property>
+			<description>The Revised Text</description>
+			<display-name>To Text</display-name>
+			<property-name>to</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<required>true</required>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>diff</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<property>
+			<description>Style attribute for diff chunks that have been
+				inserted in the To text</description>
+			<display-name>Insert Style Attribute</display-name>
+			<property-name>insertStyle</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>styling</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<property>
+			<description>StyleClass attribute for diff chunks that have
+				been inserted in the To text</description>
+			<display-name>Insert StyleClass Attribute</display-name>
+			<property-name>insertStyleClass</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>styling</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<property>
+			<description>Style attribute for diff chunks that are equal in
+				both text</description>
+			<display-name>Equal Style Attribute</display-name>
+			<property-name>equalStyle</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>styling</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<property>
+			<description>StyleClass attribute for diff chunks that are
+				equal in both text</description>
+			<display-name>Equal StyleClass Attribute</display-name>
+			<property-name>equalStyleClass</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>styling</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<property>
+			<description>Style attribute for diff chunks that are deleted
+				from the From text</description>
+			<display-name>Delete Style Attribute</display-name>
+			<property-name>deleteStyle</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>styling</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<property>
+			<description>StyleClass attribute for diff chunks that are
+				deleted from the From text</description>
+			<display-name>Delete StyleClass Attribute</display-name>
+			<property-name>deleteStyleClass</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>styling</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<property>
+			<description>Type of Post-diff Cleanup to be performed
+			</description>
+			<display-name>Post-diff cleanup</display-name>
+			<property-name>cleanup</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<editor>
+						com.ibm.workplace.designer.property.editors.comboParameterEditor
+					</editor>
+					<editor-parameter>
+						none|No Cleanup
+						efficiency|Efficiency
+						semantic|Semantic
+</editor-parameter>
+					<category>diff</category>
+
+				</designer-extension>
+
+
+			</property-extension>
+		</property>
+
+		<property>
+			<description>If the mapping operation takes longer than this
+			</description>
+			<display-name>Timeout in Seconds</display-name>
+			<property-name>timeout</property-name>
+			<property-class>java.lang.Float</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>diff</category>
+				</designer-extension>
+
+			</property-extension>
+		</property>
+
+		<property>
+			<description>Only used for Efficiency Cleanup, larger the edit
+				cost, the more aggressive the cleanup</description>
+			<display-name>Edit Cost for Efficiency Cleanup</display-name>
+			<property-name>editCost</property-name>
+			<property-class>java.lang.Short</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>diff</category>
+				</designer-extension>
+
+			</property-extension>
+		</property>
+
+
+		<component-extension>
+
+			<base-component-type>com.ibm.xsp.UIOutputEx
+			</base-component-type>
+
+			<component-family>javax.faces.Output
+			</component-family>
+			<renderer-type>com.gregorbyte.TextDiff
+			</renderer-type>
+
+			<tag-name>textDiff</tag-name>
+
+			<designer-extension>
+				<in-palette>true</in-palette>
+				<category>Gregorbyte</category>
+				<render-markup>
+					&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+					&lt;xp:view xmlns:xp="http://www.ibm.com/xsp/core"&gt;
+
+					&lt;xp:panel
+					style="width:60px"&gt;
+
+					&lt;xp:image url="img.jpg"
+					id="image1"&gt;&lt;/xp:image&gt;
+
+					&lt;xp:label value="Control"
+					id="label1"&gt;
+
+					&lt;/xp:label&gt;&lt;/xp:panel&gt;&lt;/xp:view&gt;
+				</render-markup>
+			</designer-extension>
+		</component-extension>
+	</component>
+
+</faces-config>

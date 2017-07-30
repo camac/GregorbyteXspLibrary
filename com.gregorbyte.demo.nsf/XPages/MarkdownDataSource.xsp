@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/">
+
+	<xp:this.data>
+		<xp:dominoDocument var="document1" formName="Markdown"></xp:dominoDocument>
+	</xp:this.data>
+
+	<xp:button value="Save" id="button1">
+		<xp:eventHandler event="onclick" submit="true" refreshMode="complete">
+			<xp:this.action>
+
+				<xp:actionGroup>
+					<xp:saveDocument></xp:saveDocument>
+					<xp:changeDocumentMode mode="readOnly" var="document1"></xp:changeDocumentMode>
+				</xp:actionGroup>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+
+	<gb:markdown id="markdown1" value="#{document1.markdownText}"></gb:markdown>
+
+</xp:view>

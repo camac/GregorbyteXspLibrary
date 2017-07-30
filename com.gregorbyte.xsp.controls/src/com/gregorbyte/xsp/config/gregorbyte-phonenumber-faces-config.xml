@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+  
+  <converter>
+    <converter-id>gregorbyte.PhoneNumberConverter</converter-id>
+    <converter-class>com.gregorbyte.xsp.converter.phone.PhoneNumberConverter</converter-class>
+  </converter>
+  
+  <render-kit>
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>com.gregorbyte.PhoneNumber</renderer-type>
+      <renderer-class>com.gregorbyte.xsp.renderkit.phone.PhoneNumberRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+</faces-config>

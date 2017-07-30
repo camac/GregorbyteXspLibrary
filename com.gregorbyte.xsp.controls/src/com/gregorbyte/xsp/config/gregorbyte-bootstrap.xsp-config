@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+
+	<faces-config-extension>
+		<namespace-uri>http://www.gregorbyte.com/xsp/</namespace-uri>
+		<default-prefix>gb</default-prefix>
+	</faces-config-extension>
+
+	<component>
+
+		<description>Row Container for Bootstrap Columns
+		</description>
+		<display-name>Bootstrap Row</display-name>
+		<component-type>com.gregorbyte.xsp.bootstrap.Row
+		</component-type>
+		<component-class>com.gregorbyte.xsp.component.bootstrap.UIRow
+		</component-class>
+
+		<component-extension>
+
+			<base-component-type>com.ibm.xsp.Panel
+			</base-component-type>
+
+			<component-family>javax.faces.Panel
+			</component-family>
+
+			<tag-name>row</tag-name>
+
+			<designer-extension>
+				<in-palette>true</in-palette>
+				<category>Gregorbyte Library</category>
+			</designer-extension>
+
+		</component-extension>
+
+	</component>
+
+	<component>
+
+		<description>Bootstrap Columns
+		</description>
+		<display-name>Bootstrap Column</display-name>
+		<component-type>com.gregorbyte.xsp.bootstrap.Column
+		</component-type>
+		<component-class>com.gregorbyte.xsp.component.bootstrap.UIColumn
+		</component-class>
+
+		<property>
+			<description>Adds an Alignment class to the column </description>
+			<display-name>Alignment</display-name>
+			<property-name>align</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<designer-extension>
+					<editor>com.ibm.workplace.designer.property.editors.comboParameterEditor</editor>
+					<editor-parameter>
+						left
+						center
+						right
+					</editor-parameter>
+					<category>basics</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<property>
+			<description>Number of Columns to Span (Medium Screen size). Leave blank for auto calculation</description>
+			<display-name>Columns to Span</display-name>
+			<property-name>span</property-name>
+			<property-class>java.lang.Integer</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>basics</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<component-extension>
+
+			<base-component-type>com.ibm.xsp.Panel
+			</base-component-type>
+
+			<component-family>javax.faces.Panel
+			</component-family>
+
+			<tag-name>column</tag-name>
+
+			<designer-extension>
+				<in-palette>true</in-palette>
+				<category>Gregorbyte Library</category>
+			</designer-extension>
+
+		</component-extension>
+
+	</component>
+
+	<component>
+
+		<description>Container for Bootstrap Layout
+		</description>
+		<display-name>Bootstrap Container</display-name>
+		<component-type>com.gregorbyte.xsp.bootstrap.Container
+		</component-type>
+		<component-class>com.gregorbyte.xsp.component.bootstrap.UIContainer
+		</component-class>
+
+		<property>
+			<description>Use Fluid Layout 
+			</description>
+			<display-name>Use Fluid Layout</display-name>
+			<property-name>fluid</property-name>
+			<property-class>java.lang.Boolean</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>display</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+
+		<component-extension>
+
+			<base-component-type>com.ibm.xsp.Panel
+			</base-component-type>
+
+			<component-family>javax.faces.Panel
+			</component-family>
+
+			<tag-name>container</tag-name>
+
+			<designer-extension>
+				<in-palette>true</in-palette>
+				<category>Gregorbyte Library</category>
+			</designer-extension>
+
+		</component-extension>
+
+	</component>
+
+</faces-config>

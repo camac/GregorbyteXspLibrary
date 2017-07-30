@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/">
+
+	<h3>Themed Panel Grid</h3>
+
+	<gb:panelGrid id="panelGrid2" themeId="PanelGrid.Black">
+
+		<xp:label value="Label" id="label5"></xp:label>
+		<xp:inputText id="inputText5"></xp:inputText>
+
+		<xp:label value="Label" id="label6"></xp:label>
+		<xp:inputText id="inputText6"></xp:inputText>
+
+		<xp:label value="Label" id="label7"></xp:label>
+		<xp:inputText id="inputText7"></xp:inputText>
+
+		<xp:label value="Label" id="label8"></xp:label>
+		<xp:inputText id="inputText8"></xp:inputText>
+
+
+	</gb:panelGrid>
+
+</xp:view>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+
+	<faces-config-extension>
+		<namespace-uri>http://www.gregorbyte.com/xsp/
+		</namespace-uri>
+		<default-prefix>gb</default-prefix>
+	</faces-config-extension>
+
+	<component>
+
+		<base-component-type>com.ibm.xsp.UIOutputEx
+		</base-component-type>
+
+		<description>Outputs the Mime Structure of a Mime Rich Text
+			Field
+		</description>
+		<display-name>Mime Inspector</display-name>
+		<component-type>com.gregorbyte.xsp.MimeInspector
+		</component-type>
+		<component-class>com.gregorbyte.xsp.component.UIMimeInspector
+		</component-class>
+		<property>
+			<description>Shows the Content as Text of each MimeEntity
+			</description>
+			<display-name>Show Content</display-name>
+			<property-name>showContent</property-name>
+			<property-class>java.lang.Boolean</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>display</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+		<property>
+			<description>Shows the Headers of each MimeEntity
+			</description>
+			<display-name>Show Headers</display-name>
+			<property-name>showHeaders</property-name>
+			<property-class>java.lang.Boolean</property-class>
+			<property-extension>
+				<allow-run-time-binding>true</allow-run-time-binding>
+				<designer-extension>
+					<category>display</category>
+				</designer-extension>
+			</property-extension>
+		</property>
+		<component-extension>
+
+			<base-component-type>com.ibm.xsp.UIOutputEx
+			</base-component-type>
+
+			<component-family>javax.faces.Output
+			</component-family>
+
+			<tag-name>mimeInspector</tag-name>
+
+			<designer-extension>
+				<in-palette>true</in-palette>
+				<category>Gregorbyte</category>
+				<render-markup>
+					&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+					&lt;xp:view xmlns:xp="http://www.ibm.com/xsp/core"&gt;
+
+					&lt;xp:panel
+					style="width:60px"&gt;
+
+					&lt;xp:image url="img.jpg"
+					id="image1"&gt;&lt;/xp:image&gt;
+
+					&lt;xp:label value="Control"
+					id="label1"&gt;
+
+					&lt;/xp:label&gt;&lt;/xp:panel&gt;&lt;/xp:view&gt;
+				</render-markup>
+			</designer-extension>
+		</component-extension>
+	</component>
+
+</faces-config>

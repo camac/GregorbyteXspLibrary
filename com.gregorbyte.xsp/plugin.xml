@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.ibm.commons.Extension">
+      <service
+            class="com.gregorbyte.xsp.resources.GregorbyteResourceProvider"
+            type="com.ibm.xsp.GlobalResourceProvider">
+      </service>
+   </extension>
+   <extension
+         point="com.ibm.commons.Extension">
+      <service
+            class="com.gregorbyte.xsp.library.GregorbyteXspLibrary"
+            type="com.ibm.xsp.Library">
+      </service>
+   </extension>
+   <extension
+         point="com.ibm.commons.Extension">
+      <service
+            class="com.gregorbyte.xsp.minifier.GregorbyteLoader"
+            type="com.ibm.xsp.minifier.loader">
+      </service>
+   </extension>
+   <extension
+         point="com.ibm.commons.Extension">
+      <service
+            class="com.gregorbyte.xsp.resources.GregorbyteModulePath"
+            type="com.ibm.xsp.resource.DojoModulePathResource">
+      </service>
+   </extension>
+
+</plugin>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:gb="http://www.gregorbyte.com/xsp/">
+	<xp:this.data>
+		<xp:dominoDocument formName="MimeInspectorExample"
+			var="example">
+		</xp:dominoDocument>
+	</xp:this.data>
+
+	<h1>Mime Inspector</h1>
+
+	<p>This Code Outputs the Current Mime Structure of a Mime Field</p>
+
+	<hr></hr>
+
+	<gb:mimeInspector id="mimeInspector1" value="#{example.body}"></gb:mimeInspector>
+
+	<hr></hr>
+
+	<xp:label value="Subject" id="label1"></xp:label>
+	<xp:inputText id="inputText1" value="#{example.subject}"></xp:inputText>
+
+	<xp:fileUpload id="fileUpload1" value="#{example.body}"></xp:fileUpload>
+
+	<xp:inputRichText id="inputRichText1" value="#{example.body}"></xp:inputRichText>
+
+	<xp:button value="Submit" id="buttonSubmit">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+		</xp:eventHandler>
+	</xp:button>
+	<xp:button value="Edit" id="button1">
+		
+	<xp:eventHandler event="onclick" submit="true" refreshMode="complete">
+		<xp:this.action>
+			<xp:changeDocumentMode mode="edit" var="example"></xp:changeDocumentMode>
+		</xp:this.action></xp:eventHandler></xp:button>
+
+	<xp:button value="Save Example" id="buttonSave">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+			<xp:this.action>
+				<xp:saveDocument var="example"></xp:saveDocument>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+	<xp:button value="Update / Add Embedded xml" id="button2">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+			<xp:this.action><![CDATA[#{javascript:com.gregorbyte.xsp.component.EmbeddedExperienceBean.updateUrl(example.getDocument());}]]></xp:this.action>
+		</xp:eventHandler></xp:button>
+	
+	<hr></hr>
+
+	<xp:viewPanel rows="30" id="viewPanel1"
+		pageName="/MimeInspector.xsp">
+		<xp:this.facets>
+			<xp:pager partialRefresh="true" layout="Previous Group Next"
+				xp:key="headerPager" id="pager1">
+			</xp:pager>
+		</xp:this.facets>
+		<xp:this.data>
+			<xp:dominoView var="examples"
+				viewName="MimeInspectorExamples">
+			</xp:dominoView>
+		</xp:this.data>
+		<xp:viewColumn columnName="$2" id="viewColumn1" displayAs="link"
+			openDocAsReadonly="true">
+			<xp:viewColumnHeader value="Last Modified"
+				id="viewColumnHeader1">
+			</xp:viewColumnHeader>
+		</xp:viewColumn>
+		<xp:viewColumn columnName="subject" id="viewColumn2">
+			<xp:viewColumnHeader value="Subject"
+				id="viewColumnHeader2">
+			</xp:viewColumnHeader>
+		</xp:viewColumn>
+	</xp:viewPanel>
+
+</xp:view>
