@@ -9,9 +9,13 @@ Require-Bundle: com.ibm.xsp.core,
  com.ibm.commons,
  com.ibm.xsp.core,
  org.eclipse.osgi,
- com.ibm.xsp.domino
-Export-Package: com.gregorbyte.xsp.beans,
+ com.ibm.xsp.domino,
+ org.eclipse.ui;resolution:=optional,
+ org.eclipse.core.runtime;resolution:=optional
+Export-Package: com.gregorbyte.bundleinspector.view,
+ com.gregorbyte.xsp.beans,
  com.gregorbyte.xsp.library,
  com.gregorbyte.xsp.plugin
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: com.gregorbyte.xsp.plugin.Activator
+Import-Package: org.eclipse.ui.part

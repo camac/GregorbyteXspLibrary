@@ -9,4 +9,33 @@
       </service>
    </extension>
 
+	<extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="com.gregorbyte.bundleinspector.actionSet"
+            label="Bundle Inspector"
+            visible="true">
+         <menu
+               id="com.gregorbyte.bundleinspector.menu"
+               label="Bundle Inspector">
+            <separator
+                  name="com.gregorbyte.bundleinspector.separator">
+            </separator>
+         </menu>
+         <action
+               class="com.gregorbyte.bundleinspector.view.OpenDialogAction"
+               icon="icons/folder_go.png"
+               id="com.gregorbyte.bundleinspector.open"
+               label="Open Bundle Inspector"
+               menubarPath="com.gregorbyte.bundleinspector.menu/com.gregorbyte.bundleinspector.separator"
+               style="push"
+               toolbarPath="com.gregorbyte.bundleinspector.separator"
+               tooltip="Open Bundle Inspector">
+         </action>
+
+      
+
+      </actionSet>
+   </extension>
+
 </plugin>
