@@ -32,29 +32,37 @@ public class OpenDialogAction implements IWorkbenchWindowActionDelegate {
 	@Override
 	public void run(IAction arg0) {
 
-		SelectPluginDialog d = new SelectPluginDialog(window.getShell(), true);
-		
-		d.loadBundles();
-		
-		if (d.open() != Window.OK) {
-			return;
-		}
+		boolean keepgoing = true;
 
-		Object[] o = d.getResult();
+		while (keepgoing) {
 
-		if (o != null && o.length > 0) {
-			
-			if (o[0] instanceof Bundle) {
-				
-				BundleDiagnosis diag = diagnose((Bundle)o[0]);
-				MessageDialog.openInformation(window.getShell(), "Bundle Diagnosis", diag.getMessage());
-				
-			} else {
-				System.out.println("not a bundle");
+			SelectPluginDialog d = new SelectPluginDialog(window.getShell(), true);
+
+			d.loadBundles();
+
+			if (d.open() != Window.OK) {
+				return;
 			}
 			
+			Object[] o = d.getResult();
+
+			keepgoing = false;
+
+			if (o != null && o.length > 0) {
+
+				if (o[0] instanceof Bundle) {
+
+					BundleDiagnosis diag = diagnose((Bundle) o[0]);
+					MessageDialog.openInformation(window.getShell(), "Bundle Diagnosis", diag.getMessage());
+					keepgoing = true;
+
+				} else {
+					System.out.println("not a bundle");
+				}
+
+			}
 		}
-		
+
 	}
 
 	@Override
@@ -119,7 +127,6 @@ public class OpenDialogAction implements IWorkbenchWindowActionDelegate {
 						return null;
 					}
 
-					
 					diagnosis.setName(bundle.getName());
 					diagnosis.setLocation(bundle.getLocation());
 					diagnosis.setId(bundle.getBundleId() + "");

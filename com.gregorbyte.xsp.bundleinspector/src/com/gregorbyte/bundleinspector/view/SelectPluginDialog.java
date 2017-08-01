@@ -85,6 +85,9 @@ public class SelectPluginDialog extends FilteredItemsSelectionDialog {
 
 				}
 
+				if (object == null) {
+					return null;
+				}
 				return object.toString();
 			}
 
