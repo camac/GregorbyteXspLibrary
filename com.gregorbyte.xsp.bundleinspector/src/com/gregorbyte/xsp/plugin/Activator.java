@@ -1,9 +1,9 @@
 package com.gregorbyte.xsp.plugin;
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class Activator extends AbstractUIPlugin {
+public class Activator implements BundleActivator {
 
 	public static Activator instance;
 	private static BundleContext context;

@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.dialogs.FilteredItemsSelectionDialog;
 import org.osgi.framework.Bundle;
+import org.osgi.framework.Version;
 
 import com.gregorbyte.xsp.plugin.Activator;
 
@@ -178,7 +179,7 @@ public class SelectPluginDialog extends FilteredItemsSelectionDialog {
 	@Override
 	protected IDialogSettings getDialogSettings() {
 
-		IDialogSettings settings = Activator.instance.getDialogSettings().getSection(DIALOG_SETTINGS);
+		IDialogSettings settings = null;
 
 		settings = new DialogSettings(DIALOG_SETTINGS);
 
@@ -202,6 +203,28 @@ public class SelectPluginDialog extends FilteredItemsSelectionDialog {
 
 			@Override
 			public int compare(Object o1, Object o2) {
+				
+				if (o1 instanceof AbstractBundle && o2 instanceof AbstractBundle) {
+					
+					AbstractBundle b1 = (AbstractBundle)o1;
+					AbstractBundle b2 = (AbstractBundle)o2;
+										
+					int result = b1.getSymbolicName().compareTo(b2.getSymbolicName()); 
+
+					if (result == 0) {
+						
+						Version v1 = b1.getBundleData().getVersion();
+						Version v2 = b2.getBundleData().getVersion();
+						
+						return v2.compareTo(v1);
+						
+					} else {
+						return result;
+					}
+					
+					
+				}
+				
 				return o1.toString().compareTo(o2.toString());
 			}
 
