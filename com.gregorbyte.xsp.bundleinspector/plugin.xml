@@ -24,7 +24,7 @@
          </menu>
          <action
                class="com.gregorbyte.bundleinspector.view.OpenDialogAction"
-               icon="icons/folder_go.png"
+               icon="icons/plugin_error.png"
                id="com.gregorbyte.bundleinspector.open"
                label="Open Bundle Inspector"
                menubarPath="com.gregorbyte.bundleinspector.menu/com.gregorbyte.bundleinspector.separator"

@@ -5,7 +5,6 @@ import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -13,6 +12,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.jface.dialogs.IDialogSettings;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.osgi.framework.internal.core.AbstractBundle;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
@@ -21,14 +24,84 @@ import org.eclipse.ui.dialogs.FilteredItemsSelectionDialog;
 import org.osgi.framework.Bundle;
 
 import com.gregorbyte.xsp.plugin.Activator;
-import com.ibm.commons.util.StringUtil;
 
+@SuppressWarnings("restriction")
 public class SelectPluginDialog extends FilteredItemsSelectionDialog {
+
+	public static final String IMG_RESOLVED = "/icons/plugin.png";
+	public static final String IMG_NOTRESOLVED = "/icons/plugin_disabled.png";
+
+	private static ImageDescriptor resolved;
+	private static ImageDescriptor unresolved;
 
 	private static ArrayList<Bundle> resources = new ArrayList<Bundle>();
 
+	static {
+		resolved = ImageDescriptor.createFromFile(SelectPluginDialog.class, IMG_RESOLVED);
+		unresolved = ImageDescriptor.createFromFile(SelectPluginDialog.class, IMG_NOTRESOLVED);
+	}
+
+	public SelectPluginDialog(Shell arg0) {
+		super(arg0);
+	}
+
+	public SelectPluginDialog(Shell arg0, boolean arg1) {
+		super(arg0, arg1);
+
+		setTitle("Select Bundle to Inspect");
+		setSelectionHistory(new ResourceSelectionHistory());
+
+		setListLabelProvider(new LabelProvider() {
+
+			private Image resolvedImage = resolved.createImage();
+			private Image unresolvedImage = unresolved.createImage();
+
+			@Override
+			public Image getImage(Object object) {
+
+				if (object instanceof AbstractBundle) {
+
+					int state = ((AbstractBundle) object).getState();
+
+					if (state >= Bundle.RESOLVED) {
+						return resolvedImage;
+					} else if (state >= 0) {
+						return unresolvedImage;
+					}
+
+				}
+
+				return super.getImage(object);
+			}
+
+			@Override
+			public String getText(Object object) {
+
+				if (object instanceof AbstractBundle) {
+					AbstractBundle b = ((AbstractBundle) object);
+
+					return String.format("%s %s", b.getSymbolicName(), b.getBundleData().getVersion());
+
+				}
+
+				return object.toString();
+			}
+
+			@Override
+			public void dispose() {
+
+				resolvedImage.dispose();
+				resolvedImage = null;
+
+				super.dispose();
+			}
+
+		});
+
+	}
+
 	public void loadBundles() {
-		
+
 		Bundle[] bundles = AccessController.doPrivileged(new PrivilegedAction<Bundle[]>() {
 
 			@Override
@@ -42,18 +115,8 @@ public class SelectPluginDialog extends FilteredItemsSelectionDialog {
 		for (Bundle bundle : bundles) {
 			resources.add(bundle);
 		}
-				
-	}
-
-	public SelectPluginDialog(Shell arg0, boolean arg1) {
-		super(arg0, arg1);
-
-		setTitle("Select Bundle to Inspect");
-		setSelectionHistory(new ResourceSelectionHistory());
 
 	}
-	
-	
 
 	private class ResourceSelectionHistory extends SelectionHistory {
 
@@ -69,11 +132,6 @@ public class SelectPluginDialog extends FilteredItemsSelectionDialog {
 
 	}
 
-	public SelectPluginDialog(Shell arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	protected Control createExtendedContentArea(Composite arg0) {
 		return null;
@@ -85,11 +143,11 @@ public class SelectPluginDialog extends FilteredItemsSelectionDialog {
 
 			@Override
 			public boolean matchItem(Object item) {
-				
+
 				if (item instanceof Bundle) {
 					return matches(((Bundle) item).getSymbolicName());
 				}
-				
+
 				return matches(item.toString());
 			}
 
@@ -106,7 +164,7 @@ public class SelectPluginDialog extends FilteredItemsSelectionDialog {
 
 		progressMonitor.beginTask("Searching", resources.size());
 
-		for (Iterator iter = resources.iterator(); iter.hasNext();) {
+		for (Iterator<Bundle> iter = resources.iterator(); iter.hasNext();) {
 			contentProvider.add(iter.next(), itemsFilter);
 			progressMonitor.worked(1);
 		}
@@ -123,20 +181,21 @@ public class SelectPluginDialog extends FilteredItemsSelectionDialog {
 		IDialogSettings settings = Activator.instance.getDialogSettings().getSection(DIALOG_SETTINGS);
 
 		settings = new DialogSettings(DIALOG_SETTINGS);
-		
+
 		return settings;
 	}
 
 	@Override
 	public String getElementName(Object item) {
-		
+
 		if (item instanceof Bundle) {
-			return ((Bundle)item).getSymbolicName();
+			return ((Bundle) item).getSymbolicName();
 		}
-		
+
 		return item.toString();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	protected Comparator getItemsComparator() {
 		return new Comparator() {
@@ -153,7 +212,5 @@ public class SelectPluginDialog extends FilteredItemsSelectionDialog {
 	protected IStatus validateItem(Object arg0) {
 		return Status.OK_STATUS;
 	}
-	
-	
 
 }

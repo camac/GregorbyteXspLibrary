@@ -33,8 +33,9 @@ public class OpenDialogAction implements IWorkbenchWindowActionDelegate {
 	public void run(IAction arg0) {
 
 		SelectPluginDialog d = new SelectPluginDialog(window.getShell(), true);
-		d.setInitialPattern("a");
+		
 		d.loadBundles();
+		
 		if (d.open() != Window.OK) {
 			return;
 		}

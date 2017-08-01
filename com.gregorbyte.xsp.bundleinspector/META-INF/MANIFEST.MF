@@ -18,4 +18,3 @@ Export-Package: com.gregorbyte.bundleinspector.view,
  com.gregorbyte.xsp.plugin
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: com.gregorbyte.xsp.plugin.Activator
-Import-Package: org.eclipse.ui.part
