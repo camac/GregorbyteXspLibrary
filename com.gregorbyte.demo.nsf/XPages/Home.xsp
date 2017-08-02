@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
-	xmlns:xe="http://www.ibm.com/xsp/coreex">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+	<h1>Welcome to the Gregorbyte Extension Library Demo Database</h1>
 
 	<xp:this.resources>
 		<xp:dojoModule name="gregorbyte.dojo.cameron.cam"></xp:dojoModule>
-		<xp:dojoModulePath
-			url="/xsp/.ibmxspres/.gregorbyte/dojo/cameron/test.js">
+		<xp:dojoModulePath url="/xsp/.ibmxspres/.gregorbyte/dojo/cameron/test.js">
 		</xp:dojoModulePath>
 		<xp:linkResource href="/xsp/.ibmxspres/.gregorbyte/dojo/cameron/test.js" type="text/javascript"></xp:linkResource>
 		<xp:linkResource href="/xsp/.ibmxspres/.gregorbyte/css/gbyte.css" rel="stylesheet" type="text/css"></xp:linkResource>
@@ -18,10 +18,15 @@
 	<xp:button value="Label" id="button1" styleClass="">
 		<xp:eventHandler event="onclick" submit="false">
 			<xp:this.script><![CDATA[what();]]></xp:this.script>
-		</xp:eventHandler></xp:button>
+		</xp:eventHandler>
+	</xp:button>
 
 	<xe:djButton label="Dojo Button" id="djButton1">
 		<xp:eventHandler event="onBlur" submit="false">
 			<xe:this.script><![CDATA[what();]]></xe:this.script>
-		</xp:eventHandler></xe:djButton>
+		</xp:eventHandler>
+	</xe:djButton>
+	
+	<xp:link escape="true" text="Bundles Inspector" id="link1" value="/BundlesInspector.xsp"></xp:link>
+
 </xp:view>
