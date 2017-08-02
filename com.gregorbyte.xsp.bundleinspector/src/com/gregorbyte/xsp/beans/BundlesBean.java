@@ -10,29 +10,20 @@ import java.util.Map;
 
 import javax.faces.context.FacesContext;
 
+import org.eclipse.osgi.service.resolver.BundleDescription;
+import org.eclipse.osgi.service.resolver.BundleSpecification;
+import org.eclipse.osgi.service.resolver.ImportPackageSpecification;
+import org.eclipse.osgi.service.resolver.PlatformAdmin;
+import org.eclipse.osgi.service.resolver.ResolverError;
+import org.eclipse.osgi.service.resolver.State;
+import org.eclipse.osgi.service.resolver.VersionConstraint;
+import org.eclipse.osgi.service.resolver.VersionRange;
 import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
 
-import com.gregorbyte.xsp.library.BundleInspectorXspLibrary;
 import com.gregorbyte.xsp.plugin.Activator;
 import com.ibm.commons.util.StringUtil;
-import com.ibm.security.pkcs7.DigestedData;
-
-import org.eclipse.core.runtime.internal.adaptor.EclipseAdaptorMsg;
-import org.eclipse.core.runtime.internal.adaptor.EclipseCommandProvider;
-import org.eclipse.core.runtime.internal.adaptor.MessageHelper;
-import org.eclipse.osgi.framework.console.CommandInterpreter;
-import org.eclipse.osgi.framework.console.CommandProvider;
-import org.eclipse.osgi.framework.internal.core.Framework;
-import org.eclipse.osgi.framework.internal.core.OSGi;
-import org.eclipse.osgi.framework.internal.core.SystemBundle;
-import org.eclipse.osgi.framework.internal.core.SystemBundleActivator;
-import org.eclipse.osgi.internal.baseadaptor.SystemBundleData;
-import org.eclipse.osgi.internal.resolver.StateHelperImpl;
-import org.eclipse.osgi.service.resolver.*;
-import org.eclipse.osgi.util.NLS;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.ServiceReference;
 
 public class BundlesBean implements Serializable {
 
@@ -120,12 +111,12 @@ public class BundlesBean implements Serializable {
 		return null;
 	}
 
-	private String getConstraintString(VersionConstraint paramVersionConstraint) {
-		VersionRange localVersionRange = paramVersionConstraint.getVersionRange();
-		if (localVersionRange == null) {
-			return paramVersionConstraint.getName();
+	private String getConstraintString(VersionConstraint vc) {
+		VersionRange vr = vc.getVersionRange();
+		if (vr == null) {
+			return vc.getName();
 		}
-		return paramVersionConstraint.getName() + '_' + localVersionRange;
+		return vc.getName() + '_' + vr;
 	}
 
 	private String getErrorMessage(VersionConstraint vc) {
@@ -263,7 +254,7 @@ public class BundlesBean implements Serializable {
 						ServiceReference platformAdminRef = context.getServiceReference(PlatformAdmin.class.getName());
 						context.ungetService(platformAdminRef);
 					} catch (Exception e) {
-						// e.printStackTrace();
+
 					}
 				}
 

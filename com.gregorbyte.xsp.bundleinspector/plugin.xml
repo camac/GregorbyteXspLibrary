@@ -23,6 +23,16 @@
             </separator>
          </menu>
          <action
+               class="com.gregorbyte.bundleinspector.view.CopySampleXPageToClipboardAction"
+               icon="icons/page_code.png"
+               id="com.gregorbyte.bundleinspector.copydemopage"
+               label="Copy Sample XPage to Clipboard"
+               menubarPath="com.gregorbyte.bundleinspector.menu/com.gregorbyte.bundleinspector.separator"
+               style="push"
+               toolbarPath="com.gregorbyte.bundleinspector.separator"
+               tooltip="Copy Sample XPages to Clipboard">
+         </action>
+         <action
                class="com.gregorbyte.bundleinspector.view.OpenDialogAction"
                icon="icons/plugin_error.png"
                id="com.gregorbyte.bundleinspector.open"

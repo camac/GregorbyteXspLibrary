@@ -192,7 +192,7 @@ public class OpenDialogAction implements IWorkbenchWindowActionDelegate {
 						ServiceReference platformAdminRef = context.getServiceReference(PlatformAdmin.class.getName());
 						context.ungetService(platformAdminRef);
 					} catch (Exception e) {
-						// e.printStackTrace();
+
 					}
 
 				}

@@ -28,9 +28,4 @@ public class BundleInspectorXspLibrary extends AbstractXspLibrary {
 		return PLUGIN_ID;
 	}
 
-	@Override
-	public boolean isGlobalScope() {
-		return true;
-	}
-
 }

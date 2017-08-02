@@ -2,7 +2,7 @@
 <feature
       id="com.gregorbyte.xsp.bundleinspector.feature"
       label="Gregorbyte Bundle Inspector Feature"
-      version="1.0.0.qualifier"
+      version="1.3.0.qualifier"
       provider-name="GREGORBYTE">
 
    <description url="http://www.example.com/description">
