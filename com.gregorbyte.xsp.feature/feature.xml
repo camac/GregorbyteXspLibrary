@@ -2,7 +2,7 @@
 <feature
       id="com.gregorbyte.xsp.feature"
       label="Gregorbyte ExtLib Feature"
-      version="1.2.1.qualifier"
+      version="1.3.0.qualifier"
       provider-name="Gregorbyte">
 
    <description url="http://www.example.com/description">
@@ -43,5 +43,26 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
+
+   <plugin
+         id="com.gregorbyte.xsp.bundleinspector"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.gregorbyte.lib.libphonenumber"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.gregorbyte.xsp.flagicons"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

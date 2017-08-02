@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" style="padding: 20px;">
+
+	<style>
+
+		.label {
+			padding: 5px;
+		}
+
+		.label-success { color: white; background-color: green; }
+		.label-danger { color: white; background-color: red; }
+		.label-info { color: white; background-color: gray; }
+		
+	</style>
+
+	<xp:panel>
+		<h1>Bundles Inspector</h1>
+
+		<xp:table style="margin-top: 15px;">
+			<xp:tr>
+				<xp:td>Filter</xp:td>
+				<xp:td>
+					<xp:inputText id="inputText1" value="#{bundlesBean.filter}">
+						<xp:eventHandler event="onkeyup" submit="true" refreshMode="partial" disableValidators="true" refreshId="table1"></xp:eventHandler>
+					</xp:inputText>
+				</xp:td>
+				<xp:td>
+					Quick Searches:
+				</xp:td>
+				<xp:td>
+					<!-- Add links with your favourite searches -->
+					<xp:link escape="true" text="xsp.extlib" id="link2">
+						<xp:eventHandler event="onclick" submit="true" refreshMode="complete">
+							<xp:this.action>
+								<xp:setValue binding="#{bundlesBean.filter}" value="xsp.extlib"></xp:setValue>
+							</xp:this.action>
+						</xp:eventHandler>
+					</xp:link>
+					&#160;
+
+				</xp:td>
+			</xp:tr>
+		</xp:table>
+	</xp:panel>
+	<xp:table id="table1" style="width: 100%;" cellspacing="0" cellpadding="3">
+		<xp:tr>
+			<xp:td style="font-weight: bold; background-color: #eee;">Id</xp:td>
+			<xp:td style="font-weight: bold; background-color: #eee;">Symbolic Name</xp:td>
+			<xp:td style="font-weight: bold; background-color: #eee;">Location</xp:td>
+			<xp:td style="font-weight: bold; background-color: #eee;">State</xp:td>
+			<xp:td style="font-weight: bold; background-color: #eee;"></xp:td>
+		</xp:tr>
+
+		<xp:repeat id="repeat1" rows="300000" value="#{bundlesBean.bundles}" var="bundle">
+
+			<xp:span id="span1">
+
+				<xp:tr>
+					<xp:td>
+						<xp:text escape="true" id="computedField3" value="#{bundle.bundleId}"></xp:text>
+					</xp:td>
+					<xp:td>
+						<xp:text escape="true" id="computedField1" value="#{bundle.symbolicName}"></xp:text>
+					</xp:td>
+					<xp:td>
+						<xp:text escape="true" id="computedField2" value="#{bundle.location}" styleClass="text-muted"></xp:text>
+					</xp:td>
+					<xp:td>
+						<xp:text styleClass="label label-info" escape="true" id="computedField21" value="UNINSTALLED" rendered="#{bundle.state eq 1}"></xp:text>
+						<xp:text styleClass="label label-danger" escape="true" id="computedField22" value="INSTALLED" rendered="#{bundle.state eq 2}"></xp:text>
+						<xp:text styleClass="label label-success" escape="true" id="computedField23" value="RESOLVED" rendered="#{bundle.state eq 4}"></xp:text>
+						<xp:text styleClass="label label-success" escape="true" id="computedField24" value="LAZY" rendered="#{bundle.state eq 8}"></xp:text>
+						<xp:text styleClass="label label-info" escape="true" id="computedField25" value="STOPPING" rendered="#{bundle.state eq 16}"></xp:text>
+						<xp:text styleClass="label label-success" escape="true" id="computedField26" value="ACTIVE" rendered="#{bundle.state eq 32}"></xp:text>
+					</xp:td>
+					<xp:td>
+						<xp:button value="Diagnose" id="button2" rendered="#{bundle.state eq 2}">
+							<xp:eventHandler event="onclick" submit="true" refreshMode="complete" action="#{bundlesBean.diagnose}">
+							</xp:eventHandler>
+						</xp:button>
+					</xp:td>
+				</xp:tr>
+
+				<xp:tr rendered="#{not empty bundlesBean.diagnosis}">
+					<xp:td style="padding-bottom: 5px; border-bottom: 1px solid gray;"></xp:td>
+					<xp:td style="padding-bottom: 5px; border-bottom: 1px solid gray;"></xp:td>
+					<xp:td colspan="3" style="padding-bottom: 5px; border-bottom: 1px solid gray;">
+						<xp:text escape="true" id="computedField5" value="#{bundlesBean.diagnosis.message}"></xp:text>
+					</xp:td>
+
+				</xp:tr>
+			</xp:span>
+		</xp:repeat>
+
+	</xp:table>
+
+</xp:view>

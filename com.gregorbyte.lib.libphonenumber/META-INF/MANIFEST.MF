@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Gregorbyte Lib Libphonenumber
 Bundle-SymbolicName: com.gregorbyte.lib.libphonenumber;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.3.0.qualifier
 Bundle-Activator: com.gregorbyte.xsp.lib.libphonenumber.plugin.Activator
 Bundle-Vendor: GREGORBYTE
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
